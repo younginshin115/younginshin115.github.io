@@ -90,6 +90,7 @@ social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
+    - "https://github.com/younginshin115"
 
 # Analytics
 analytics:
@@ -102,14 +103,17 @@ analytics:
 # Site Author
 author:
   name             : "Youngin"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "디버깅을 좋아하는 개발자입니다."
+  avatar           : "/assets/images/profile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "신입 개발자 신영인입니다"
   location         : "Seongnam, Korea"
-  email            : younginshin115@gmail.com
+  email            : "younginshin115@gmail.com"
   links:
     - label: "Email"
       icon: "younginshin115@gmail.com"
       # url: "mailto:your.name@email.com"
+    - label: "GitHub"
+      icon: "https://github.com/younginshin115"
+      # url: "https://github.com/"
     - label: "Blog"
       icon: "younginshin115.github.io"
       # url: "https://your-website.com"
@@ -119,9 +123,6 @@ author:
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
-    - label: "GitHub"
-      icon: "https://github.com/younginshin115"
-      # url: "https://github.com/"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
