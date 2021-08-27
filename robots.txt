@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://younginshin115.github.io/sitemap.xml
