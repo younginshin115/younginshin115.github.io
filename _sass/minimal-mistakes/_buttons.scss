@@ -95,3 +95,20 @@
     font-size: $type-size-7;
   }
 }
+
+.skill {
+  border: 1px solid #6d6d6d;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 5px;
+  padding: 4px 7px 4px 7px;
+  margin: 1px;
+} .skill:hover {
+  background-color: #0F52BA;
+  color: #fff;
+  border: 1px solid #0F52BA;
+}
+
+.tab { 
+  white-space: pre; 
+}
