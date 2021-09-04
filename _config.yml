@@ -106,48 +106,21 @@ author:
   avatar           : "/assets/images/profile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "신입 개발자 신영인입니다"
   location         : "Seongnam, Korea"
-  email            : "younginshin115@gmail.com"
+  email            :
   links:
     - label: "Email"
-      icon: "younginshin115@gmail.com"
-      # url: "mailto:your.name@email.com"
+      icon: "fas fa-fw fa-envelope-square"
+      url: mailto:younginshin115@gmail.com
     - label: "GitHub"
-      icon: "https://github.com/younginshin115"
-      # url: "https://github.com/"
-    - label: "Blog"
-      icon: "younginshin115.github.io"
-      # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/younginshin115"
 
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url:
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url:
     - label: "GitHub"
-      icon: "https://github.com/younginshin115"
-      # url:
-    - label: "GitLab"
-      icon: "https://gitlab.com/YounginShin"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url:
+      icon: "fab fa-fw fa-github"
+      url: https://github.com/younginshin115
 
 
 # Reading Files
