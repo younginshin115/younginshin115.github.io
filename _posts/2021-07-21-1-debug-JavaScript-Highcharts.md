@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Docker] 210721 cannot read property series of undefined"
+title:  "[디버깅][JavaScript] 210721 cannot read property series of undefined"
 excerpt: "ML 기반 챗봇 Javas 개발기12 - JavaScript Highcharts"
 
 toc: false
