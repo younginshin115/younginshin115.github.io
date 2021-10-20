@@ -84,3 +84,25 @@ import librosa
 
 y, s = librosa.load("{변환하려는 파일명(경로포함)}", sr=16000)
 ```
+
+<br>
+
+# WAV 파일 주파수와 채널 확인하기
+
+```python
+import librosa
+import wave
+
+def frame_rate_channel(audio_file_name):
+    print(audio_file_name)
+    with wave.open(audio_file_name, "rb") as wave_file:
+        frame_rate = wave_file.getframerate()
+        channels = wave_file.getnchannels()
+        return frame_rate,channels
+
+path = "{확인하려는 WAV 파일 경로}"
+files = glob.glob(path + '/*')
+
+for f in files:
+    print(frame_rate_channel(f))
+```
