@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Python] 210624 The client is using an unsupported version of the Socket.IO or Engine.IO protocols Error"
+title:  "[Debug][Python] 210624 The client is using an unsupported version of the Socket.IO or Engine.IO protocols Error"
 excerpt: "ML 기반 챗봇 Javas 개발기5"
 
 toc: false

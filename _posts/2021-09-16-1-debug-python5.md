@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Python] 210916 ERROR: Could not install packages due to an EnvironmentError: [Errno 13] Permission denied"
+title:  "[Debug][Python] 210916 ERROR: Could not install packages due to an EnvironmentError: [Errno 13] Permission denied"
 excerpt: "pip install 과정에서 발생한 오류 해결"
 
 toc: false

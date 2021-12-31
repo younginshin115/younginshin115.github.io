@@ -1,5 +1,5 @@
 ---
-title:  "[튜토리얼][Azure Custom Speech] 210915 Azure Custom Speech 튜토리얼"
+title:  "[Tutorial][Azure Custom Speech] 210915 Azure Custom Speech 튜토리얼"
 excerpt: "Azure Custom Speech 튜토리얼"
 
 toc: True

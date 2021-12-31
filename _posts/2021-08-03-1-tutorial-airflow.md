@@ -1,5 +1,5 @@
 ---
-title:  "[튜토리얼][Airflow] 210803 Airflow 예제"
+title:  "[Tutorial][Airflow] 210803 Airflow 예제"
 excerpt: "Airflow를 시작하는 예제"
 
 toc: false

@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Docker] 210704 cannot dlopen some gpu libraries"
+title:  "[Debug][Docker] 210704 cannot dlopen some gpu libraries"
 excerpt: "ML 기반 챗봇 Javas 개발기11 - Docker CUDA 오류 모음4"
 
 toc: false

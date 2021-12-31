@@ -1,5 +1,5 @@
 ---
-title:  "[튜토리얼][Azure Speaker Recognition] 210915 Python으로 Azure Speaker Recognition RESTful API 사용하기"
+title:  "[Tutorial][Azure Speaker Recognition] 210915 Python으로 Azure Speaker Recognition RESTful API 사용하기"
 excerpt: "Python으로 Azure Speaker Recognition RESTful API 사용하기"
 
 toc: True

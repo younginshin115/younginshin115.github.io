@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Docker] 210704 could not load dynamic library libcudnn.so.8"
+title:  "[Debug][Docker] 210704 could not load dynamic library libcudnn.so.8"
 excerpt: "ML 기반 챗봇 Javas 개발기10 - Docker CUDA 오류 모음3"
 
 toc: false

@@ -1,5 +1,5 @@
 ---
-title:  "[튜토리얼][WSL] 210917 WSL 버전 바꾸는 법"
+title:  "[Tutorial][WSL] 210917 WSL 버전 바꾸는 법"
 excerpt: "Windows에서 WSL 버전을 바꾸는 방법"
 
 toc: false

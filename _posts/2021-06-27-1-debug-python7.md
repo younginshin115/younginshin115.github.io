@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Python] 210627 Process finished with exit code -1073741819 (0xC0000005)"
+title:  "[Debug][Python] 210627 Process finished with exit code -1073741819 (0xC0000005)"
 excerpt: "ML 기반 챗봇 Javas 개발기6"
 
 toc: false

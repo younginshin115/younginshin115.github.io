@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Python] 210623 Microsoft Visual C++ 14.0 or greater is required. Get it with 'Microsoft C++ Build Tools'"
+title:  "[Debug][Python] 210623 Microsoft Visual C++ 14.0 or greater is required. Get it with 'Microsoft C++ Build Tools'"
 excerpt: "ML 기반 챗봇 Javas 개발기1"
 
 toc: false

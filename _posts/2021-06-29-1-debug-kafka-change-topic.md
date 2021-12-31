@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Spark] 210629 current committed offsets current available offsets"
+title:  "[Debug][Spark] 210629 current committed offsets current available offsets"
 excerpt: "ML 기반 챗봇 Javas 개발기7"
 
 toc: false

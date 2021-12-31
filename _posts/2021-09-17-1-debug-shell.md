@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Linux] 210917 쉘 스크립트 파일(.sh)에서 not in a function이나 not found 에러가 계속 발생할 때"
+title:  "[Debug][Linux] 210917 쉘 스크립트 파일(.sh)에서 not in a function이나 not found 에러가 계속 발생할 때"
 excerpt: "Windows에서 WSL2로 쉘 스크립트 파일(.sh)를 실행시킬 때 발생한 오류 해결"
 
 toc: false

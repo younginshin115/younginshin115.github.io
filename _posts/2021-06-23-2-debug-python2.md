@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Python] 210623 startJVM() got an unexpected keyword argument 'convertStrings'"
+title:  "[Debug][Python] 210623 startJVM() got an unexpected keyword argument 'convertStrings'"
 excerpt: "ML 기반 챗봇 Javas 개발기2"
 
 toc: false

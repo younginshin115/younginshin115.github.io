@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Java Spring] 210725 javax.servlet.ServletException: Circular view path [project]: would dispatch back to the current handler URL [/project] again. Check your ViewResolver setup!"
+title:  "[Debug][Java Spring] 210725 javax.servlet.ServletException: Circular view path [project]: would dispatch back to the current handler URL [/project] again. Check your ViewResolver setup!"
 excerpt: "Java Spring Boot로 Websocket과 Storm 활용하여 채팅을 개발하는 동안 발생한 오류 1"
 
 toc: false

@@ -1,5 +1,5 @@
 ---
-title:  "[튜토리얼][MariaDB] Ubuntu에 MariaDB 설치하기"
+title:  "[Tutorial][MariaDB] Ubuntu에 MariaDB 설치하기"
 excerpt: "Ubuntu에 MariaDB 설치하기"
 
 toc: false

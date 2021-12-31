@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Java Spring] 210620 404 에러"
+title:  "[Debug][Java Spring] 210620 404 에러"
 excerpt: "ML 기반 챗봇 개발기 - Java Spring으로 채팅을 개발하는 동안 발생한 오류"
 
 toc: false

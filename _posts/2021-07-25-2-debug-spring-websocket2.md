@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Java Spring] 210725 java.lang.IllegalArgumentException: When allowCredentials is true, allowedOrigins cannot contain the special value '*' since that cannot be set on the 'Access-Control-Allow-Origin' response header."
+title:  "[Debug][Java Spring] 210725 java.lang.IllegalArgumentException: When allowCredentials is true, allowedOrigins cannot contain the special value '*' since that cannot be set on the 'Access-Control-Allow-Origin' response header."
 excerpt: "Java Spring Boot로 Websocket과 Storm 활용하여 채팅을 개발하는 동안 발생한 오류 2"
 
 toc: false

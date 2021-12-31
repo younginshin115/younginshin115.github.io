@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Docker] 210704 failed call to cuInit: UNKNOWN ERROR (303)"
+title:  "[Debug][Docker] 210704 failed call to cuInit: UNKNOWN ERROR (303)"
 excerpt: "ML 기반 챗봇 Javas 개발기9 - Docker CUDA 오류 모음2"
 
 toc: false

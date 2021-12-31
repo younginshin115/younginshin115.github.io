@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Java Spring] 210725 Property 'spring.profiles.active' imported from location 'class path resource [application-local.yml]' is invalid in a profile specific resource [origin: class path resource [application-local.yml]"
+title:  "[Debug][Java Spring] 210725 Property 'spring.profiles.active' imported from location 'class path resource [application-local.yml]' is invalid in a profile specific resource [origin: class path resource [application-local.yml]"
 excerpt: "Java Spring Boot로 Websocket과 Storm 활용하여 채팅을 개발하는 동안 발생한 오류 3"
 
 toc: false

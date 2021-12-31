@@ -1,5 +1,5 @@
 ---
-title:  "[디버깅][Nginx] 210723 nginx upstream timed out (110 connection timed out)"
+title:  "[Debug][Nginx] 210723 nginx upstream timed out (110 connection timed out)"
 excerpt: "ML 기반 챗봇 Javas 개발기13"
 
 toc: false
