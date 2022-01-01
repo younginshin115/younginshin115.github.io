@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][Bazel] 211105 Windows에 Mediapipe 설치방법"
+title:  "[Tutorial][Bazel] 211105 Windows에 Mediapipe 설치하기"
 excerpt: Android에 머신러닝 탑재하기(3)
 
 toc: true
