@@ -213,3 +213,20 @@ git clone https://github.com/google/mediapipe.git
 (8-10) OpenCV 폴더에서 DLL 파일이 들어있는 경로를 등록한다. 아까 확인했던 opencv 폴더에서 /build/x64/vc15/bin으로 들어가면 확인할 수 있다.<br>경로를 등록한 뒤 확인 버튼을 눌러 빠져나온다.
 
 <p><img src="/assets/images/22010125.png" /></p>
+
+## (9) Mediapipe 설치 확인
+
+(9-1) Mediapipe가 제대로 설치되었는 지 확인하는 절차이다.<br>
+CMD 창으로 들어가 7-1에서 MediaPipe Repository를 clone한 폴더로 이동한다.
+
+(9-2) 아래 명령어를 차례대로 입력하여 MediaPipe가 제대로 설치되었는 지 확인한다. 아래 스크린샷처럼 나타난다면 설치가 완료된 것이다.
+
+```
+bazel build -c opt --define MEDIAPIPE_DISABLE_GPU=1 --action_env PYTHON_BIN_PATH="{Python이 설치된 경로}" mediapipe/examples/desktop/hello_world
+
+set GLOG_logtostderr=1
+
+bazel-bin\mediapipe\examples\desktop\hello_world\hello_world.exe
+```
+
+<p><img src="/assets/images/22010130.png" /></p>
