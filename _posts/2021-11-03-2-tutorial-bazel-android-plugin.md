@@ -1,6 +1,6 @@
 ---
 title:  "[Tutorial][Bazel] 211103 Android 스튜디오에 Bazel 플러그인 설치하기"
-excerpt: "Bazel Tutorial(2)"
+excerpt: "Android에 머신러닝 탑재하기(2)"
 
 toc: false
 toc_sticky: false

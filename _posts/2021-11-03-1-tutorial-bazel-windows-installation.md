@@ -1,6 +1,6 @@
 ---
 title:  "[Tutorial][Bazel] 211103 Windows에 Bazel 설치하기"
-excerpt: "Bazel Tutorial(1)"
+excerpt: "Android에 머신러닝 탑재하기(1)"
 
 toc: true
 toc_sticky: true
