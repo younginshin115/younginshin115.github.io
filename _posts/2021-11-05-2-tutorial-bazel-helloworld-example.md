@@ -13,7 +13,7 @@ tags:
 last_modified_at: 2021-11-05T16:28:00
 ---
 
-Bazel 도전기 세번째 시간으로 프로젝트를 만들어서 Hello World를 Android App에 띄워보는 것이 목표이다.
+Bazel 도전기 네번째 시간으로 Bazle 프로젝트를 하나하나 같이 만들어보고 Bazel로 빌드하여 Hello World를 Android App형태로 띄워보는 것이 목표이다.
 
 ## (1) 프로젝트 준비 - Workspace 만들기
 
@@ -91,7 +91,7 @@ rules_java_toolchains()
 
 <p><img src="/assets/images/21123138.png" /></p>
 
-## (4) 프로젝트 구조 생성
+## (4) 프로젝트 구조 만들기
 
 (4-1) WORKSPACE가 있는 폴더에 "app" 폴더를 생성한다.
 
@@ -111,7 +111,7 @@ rules_java_toolchains()
 
 ## (5) 소스 코드 작성
 
-(5-1) 메모장이나 워드패드에 아래 코드를 작성한 후 "app/java/com/example/helloworld" 경로 안에 "MainActivity.java"라는 이름으로 저장한다.
+(5-1) 아래 코드를 작성한 후 "app/java/com/example/helloworld" 경로 안에 "MainActivity.java"라는 이름으로 저장한다.
 
 ```java
 package com.example.helloworld;

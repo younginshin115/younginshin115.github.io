@@ -11,7 +11,7 @@ tags:
   - Debug
   - Android
   - adb
-last_modified_at: 2021-10-05T18:05:00
+last_modified_at: 2021-11-05T18:05:00
 ---
 
 Android 개발 중 연결된 기기를 확인하기 위해 "adb devices -l" 명령어를 사용했는데 아래와 같은 오류 메시지가 발생했다.

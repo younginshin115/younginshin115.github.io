@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][Bazel] 211105 Windows에 Mediapipe 설치하기"
+title:  "[Tutorial][Bazel-MediaPipe] 211104 Windows에 MediaPipe 설치하기"
 excerpt: Android에 머신러닝 탑재하기(3)
 
 toc: true
@@ -10,15 +10,15 @@ categories:
 tags:
   - Tutorial
   - Android
-  - Mediapipe
+  - MediaPipe
   - Windows
   - Bazel
-last_modified_at: 2021-10-04T17:05:00
+last_modified_at: 2021-11-04T17:05:00
 ---
 
-Android에 머신러닝 기능을 탑재하기 위해 Mediapipe를 설치하는 과정을 담았다.
-Mediapipe 공식 홈페이지에 기재된 튜토리얼을 따라 진행한 내용임을 미리 밝힌다.
-Mediapipe 공식 홈페이지 튜토리얼: <a href="https://google.github.io/mediapipe/getting_started/install.html#installing-on-windows">https://google.github.io/mediapipe/getting_started/install.html#installing-on-windows</a>
+Android에 머신러닝 기능을 탑재하기 위해 MediaPipe 설치하는 과정을 담았다.
+MediaPipe 공식 홈페이지에 기재된 튜토리얼을 따라 진행한 내용임을 미리 밝힌다.
+MediaPipe 공식 홈페이지 튜토리얼: <a href="https://google.github.io/mediapipe/getting_started/install.html#installing-on-windows">https://google.github.io/mediapipe/getting_started/install.html#installing-on-windows</a>
 
 ## (1) MSYS2 설치 및 환경변수 등록
 
