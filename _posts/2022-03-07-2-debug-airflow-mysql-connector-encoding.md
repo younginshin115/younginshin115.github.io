@@ -11,7 +11,7 @@ tags:
   - Debug
   - Airflow
   - MySQL Connector
-  - encoding
+  - Encoding
 last_modified_at: 2022-03-07T22:37:00
 ---
 
