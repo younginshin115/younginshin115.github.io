@@ -4,34 +4,52 @@
 
 /* Colors */
 $text-color: #000 !default;
-$muted-text-color: $text-color !default;
+$muted-text-color: $text-color  !default;
 $primary-color: #0F52BA !default;
 $border-color: mix(#fff, $text-color, 75%) !default;
 $footer-background-color: #0F52BA !default;
 $link-color: #0F52BA !default;
-$masthead-link-color: $text-color !default;
-$masthead-link-color-hover: $text-color !default;
+$masthead-link-color: $text-color  !default;
+$masthead-link-color-hover: $text-color  !default;
 $navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
 
 /* contrast syntax highlighting (base16) */
-$base00: #000000 !default;
-$base01: #242422 !default;
-$base02: #484844 !default;
-$base03: #6c6c66 !default;
-$base04: #918f88 !default;
-$base05: #b5b3aa !default;
-$base06: #d9d7cc !default;
-$base07: #fdfbee !default;
-$base08: #ff6c60 !default;
-$base09: #e9c062 !default;
-$base0a: #ffffb6 !default;
-$base0b: #a8ff60 !default;
-$base0c: #c6c5fe !default;
-$base0d: #96cbfe !default;
-$base0e: #ff73fd !default;
-$base0f: #b18a3d !default;
+// $base00: #000000 !default;
+// $base01: #242422 !default;
+// $base02: #484844 !default;
+// $base03: #6c6c66 !default;
+// $base04: #918f88 !default;
+// $base05: #b5b3aa !default;
+// $base06: #d9d7cc !default;
+// $base07: #fdfbee !default;
+// $base08: #ff6c60 !default;
+// $base09: #e9c062 !default;
+// $base0a: #ffffb6 !default;
+// $base0b: #a8ff60 !default;
+// $base0c: #c6c5fe !default;
+// $base0d: #96cbfe !default;
+// $base0e: #ff73fd !default;
+// $base0f: #b18a3d !default;
+
+$base00: #fafafa !default;
+$base01: #073642 !default;
+$base02: #586e75 !default;
+$base03: #657b83 !default;
+$base04: #839496 !default;
+$base05: #586e75 !default;
+$base06: #eee8d5 !default;
+$base07: #fdf6e3 !default;
+$base08: #dc322f !default;
+$base09: #db4201 !default;
+$base0a: rgb(254, 0, 110) !default;
+$base0b: #00bb19 !default;
+$base0c: #00bcac !default;
+$base0d: #268bd2 !default;
+$base0e: #6c71c4 !default;
+$base0f: #d33682 !default;
 
 .page__content {
+
   .notice,
   .notice--primary,
   .notice--info,
@@ -47,6 +65,6 @@ $base0f: #b18a3d !default;
 }
 
 .page__footer-follow .social-icons i,
-.page__footer-follow .social-icons .svg-inline--fa  {
+.page__footer-follow .social-icons .svg-inline--fa {
   color: inherit;
 }
