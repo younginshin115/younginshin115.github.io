@@ -21,7 +21,7 @@ JavaScript의 Highcharts를 사용해서 실시간 그래프를 개발하던 중
 JavaScript 내에 선언된 Chart 변수를 찾지 못해서 발생한 오류로 해당 변수를 this로 명시해주면 해결된다.
 
 #### [수정 전]
-```javascript
+{% highlight javascript linenos %}
 chart = new Highcharts.Chart({
     chart: {
         height: 300,
@@ -32,10 +32,10 @@ chart = new Highcharts.Chart({
         }
     },
 // 후략
-```
+{% endhighlight %}
 
 #### [수정 후]
-```javascript
+{% highlight javascript linenos %}
 chart = new Highcharts.Chart({
     chart: {
         height: 300,
@@ -49,4 +49,4 @@ chart = new Highcharts.Chart({
         }
     },
 // 후략
-```
+{% endhighlight %}

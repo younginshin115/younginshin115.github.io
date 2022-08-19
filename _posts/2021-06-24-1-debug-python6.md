@@ -23,10 +23,10 @@ ML 기반 챗봇을 개발 중이었다.
 
 아래 참고 링크에 따라 각 패키지를 호환되는 버전으로 재 설치 해주자 문제가 해결 되었다.
 
-```
+{% highlight shell linenos %}
 pip install --upgrade python-socketio==4.6.0
 pip install --upgrade python-engineio==3.13.2
 pip install --upgrade Flask-SocketIO==4.3.1
-```
+{% endhighlight %}
 
 참고 : <a href="https://stackoverflow.com/questions/66069215/the-client-is-using-an-unsupported-version-of-the-socket-io-or-engine-io-protoco">https://stackoverflow.com/questions/66069215/the-client-is-using-an-unsupported-version-of-the-socket-io-or-engine-io-protoco</a>

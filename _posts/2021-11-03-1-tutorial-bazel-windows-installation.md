@@ -74,8 +74,8 @@ Bazel GitHub 링크: <a href="https://github.com/bazelbuild/bazel/releases">http
 
 (4-1) 재부팅 후에 CMD 창에서 아래 명령어를 실행한다. 이미지처럼 나오면 Bazel이 정상적으로 설치된 것이다.
 
-```
+{% highlight shell linenos %}
 bazel --version
-```
+{% endhighlight %}
 
 <p><img src="/assets/images/21123121.png" /></p>

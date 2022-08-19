@@ -30,35 +30,35 @@ Custom Speech는 아래와 같은 데이터 사양을 요구합니다.
 
 # MP4(영상) 파일을 WAV(음성) 파일로 바꾸기
 
-```python
+{% highlight python linenos %}
 import os
 import subprocess
 
 command = "ffmpeg -i {} -ab 160k -ac 2 -ar 44100 -vn {}".format("{변환하려는 파일명(경로포함)}", os.path.join("{내보내려는 파일경로}", "{저장할 파일명}"))
     
 subprocess.call(command, shell=True)
-```
+{% endhighlight %}
 
 <br>
 
 # Multi 채널을 Mono 채널로 바꾸기
 
-```
+{% highlight shell linenos %}
 pip install pydub
-```
+{% endhighlight %}
 
-```python
+{% highlight python linenos %}
 from pydub import AudioSegment
 sound = AudioSegment.from_wav('{변환하려는 파일명(경로포함)}')
 sound = sound.set_channels(1)
 sound.export('{내보내려는 파일명(경로포함)}', format='wav')
-```
+{% endhighlight %}
 
 <br>
 
 # 파일 길이 자르기
 
-```python
+{% highlight python linenos %}
 import os
 import librosa
 import numpy as np
@@ -73,23 +73,23 @@ def trim_audio_data(audio_file, save_file):
     librosa.output.write_wav(save_file+'.wav', my, sr)
     
 trim_audio_data("{변환하려는 파일명(경로포함)}", "{내보내려는 파일경로}")
-```
+{% endhighlight %}
 
 <br>
 
 # 44100Hz WAV 파일 16000Hz로 변환하기
 
-```python
+{% highlight python linenos %}
 import librosa
 
 y, s = librosa.load("{변환하려는 파일명(경로포함)}", sr=16000)
-```
+{% endhighlight %}
 
 <br>
 
 # WAV 파일 주파수와 채널 확인하기
 
-```python
+{% highlight python linenos %}
 import librosa
 import wave
 
@@ -105,4 +105,4 @@ files = glob.glob(path + '/*')
 
 for f in files:
     print(frame_rate_channel(f))
-```
+{% endhighlight %}

@@ -24,10 +24,10 @@ KoBERT를 학습시킬 때 CUDA out of memory 오류가 발생했다.
 ## 시도 1
 
 아래 명령어로 CUDA의 메모리 캐시를 비우려고 시도했다.
-```python
+{% highlight python linenos %}
 import torch
 torch.cuda.empty_cache()
-```
+{% endhighlight %}
 
 하지만 메모리 캐시가 지워지지 않아 실패했다.
 
@@ -35,11 +35,11 @@ torch.cuda.empty_cache()
 
 가비지 콜렉트를 먼저 한 뒤 캐시를 비우려고 시도했다.
 
-```python
+{% highlight python linenos %}
 import torch, gc
 gc.collect()
 torch.cuda.empty_cache()
-```
+{% endhighlight %}
 
 첫번째 시도와 마찬가지로 아무런 일도 일어나지 않아서 실패했다.
 
@@ -53,12 +53,12 @@ Nvidia-smi 명령어로 현재 실행되고 있는 process를 확인한 뒤 강�
 
 현재 실행되고 있는 CUDA를 종료했다가 다시 켜는 방법을 시도했다.
 
-```python
+{% highlight python linenos %}
 from numba import cuda
 cuda.select_device(0)
 cuda.close()
 cuda.select_device(0)
-```
+{% endhighlight %}
 
 이 방법을 사용하니까 메모리를 비울 수 있었다. 사용 중인 메모리가 90%에서 4%로 줄었지만 여전히 Out of memory 오류가 발생했다. 기존 코드가 아니라 새로 시도한 코드가 메모리를 많이 사용하기 때문에 발생한 오류라는 걸 깨달았다.
 
@@ -71,8 +71,8 @@ cuda.select_device(0)
 
 GPU 사용랑은 아래 코드로 확인할 수 있다.
 
-```python
+{% highlight python linenos %}
 from GPUtil import showUtilization as gpu_usage
 gpu_usage() 
-```
+{% endhighlight %}
 <img src="/assets/images/21102004.png" />

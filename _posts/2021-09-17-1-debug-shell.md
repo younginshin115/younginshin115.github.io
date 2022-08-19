@@ -22,7 +22,8 @@ Windows에서 WSL로 쉘 스크립트 파일(.sh)을 실행시킬 때 자꾸 아
 Windows에서 작성된 파일을 Unix에서 실행시키려고 하니까 발생한 오류였다.
 아래와 같이 dos 형식을 unix 형식으로 바꿔주면 제대로 실행된다.
 
-```
+{% highlight shell linenos %}
 dos2unix 쉘스크립트파일명
-```
+{% endhighlight %}
+
 <p class="code"><img src="/assets/images/21091702.png" /></p>

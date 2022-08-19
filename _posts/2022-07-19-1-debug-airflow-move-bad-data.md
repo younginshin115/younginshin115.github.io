@@ -20,18 +20,18 @@ Airflow 버전을 2.2에서 2.3으로 업그레이드하던 중 아래와 같은
 버전 업그레이드를 통해 새로운 제약이 적용되면서 기존 데이터와 충돌을 일으킨 것입니다.
 Upgrading 버튼을 누르면 나타나는 <a href="https://airflow.apache.org/docs/apache-airflow/2.3.2/installation/upgrading.html"> Airflow 공식 문서</a>를 확인했더니 해당 데이터를 포함하는 테이블을 삭제하면 해결할 수 있다고 되어있었습니다. 문서의 가이드라인에 따라 우선 python 터미널을 열어 Airflow 설정 세션을 연결했습니다.
 
-```python
+{% highlight python linenos %}
 from airflow.settings import Session
 session = Session()
-```
+{% endhighlight %}
 
 <p><img src="/assets/images/22071902.jpg" /></p>
 
 해당 세션을 통해 위 경고창에 명시된 문제가 발생한 Table를 Drop했습니다.
-```python
+{% highlight python linenos %}
 session.execute("DROP TABLE _airflow_moved__2_2__task_instance")
 session.commit()
-```
+{% endhighlight %}
 
 <p><img src="/assets/images/22071903.jpg" /></p>
 

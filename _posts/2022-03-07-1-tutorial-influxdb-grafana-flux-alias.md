@@ -26,7 +26,7 @@ Flux 문법에서는 Alias를 지원하지 않아 불필요한 정보가 그래�
 위 링크의 개발자는 아래 모드의 마지막 줄처럼 map 함수를 사용하여 field 명을 재명명하는 방법을 제안했다.<br>
 value만 추출할 경우 시간 값이 사라져서 시계열을 기준으로 시각화하기 어려워지므로 시간값도 같이 추출한다.<br>
 
-```c
+{% highlight c linenos %}
 from(bucket: "telegraf")
   |> range(start: v.timeRangeStart, stop:v.timeRangeStop)
   |> filter(fn: (r) =>
@@ -35,7 +35,7 @@ from(bucket: "telegraf")
   )
   |> difference()
   |> map(fn: (r) => ({ _value:r._value, _time:r._time, _field:"Aborted clients" }))
-```
+{% endhighlight %}
 
 map 함수를 적용하면 아래 사진과 같이 Alias/Label이 적용되는 것을 확인할 수 있다.
 

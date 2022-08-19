@@ -81,9 +81,9 @@ MSYS2는 윈도우에서 C/C++ 컴파일을 위해 필요한 빌드툴이다.
 
 (1-16) CMD 창에 아래 명령어를 입력하여 필요 패키지를 다운로드 받는다.
 
-```
+{% highlight shell linenos %}
 pacman -S git patch unzip
-```
+{% endhighlight %}
 
 (1-17) 설치를 계속할지 물어보면 "Y"를 입력하여 설치를 완료한다.
 
@@ -156,12 +156,12 @@ Bazel 설치 법은 이전 포스트에서 다뤘으므로 <a href="/tutorial/1-
 
 (6-1) CMD 창으로 아래 4개의 환경 변수를 등록한다.
 
-```
+{% highlight shell linenos %}
 set BAZEL_VS="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools"
 set BAZEL_VC="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC"
 set BAZEL_VC_FULL_VERSION={Visual Studio Build Tools 버전}
 set BAZEL_WINSDK_FULL_VERSION={WinSDK 버전}
-```
+{% endhighlight %}
 
 <p class="code"><img src="/assets/images/22010120.png" /></p>
 
@@ -169,9 +169,9 @@ set BAZEL_WINSDK_FULL_VERSION={WinSDK 버전}
 
 (7-1) CMD 창에서 아래 명령어로 MediaPipe Repository를 클론해온다. 위치는 자유롭게 선택하면 된다.
 
-```
+{% highlight shell linenos %}
 git clone https://github.com/google/mediapipe.git
-```
+{% endhighlight %}
 
 <p class="code"><img src="/assets/images/22010121.png" /></p>
 
@@ -221,12 +221,10 @@ CMD 창으로 들어가 7-1에서 MediaPipe Repository를 clone한 폴더로 이
 
 (9-2) 아래 명령어를 차례대로 입력하여 MediaPipe가 제대로 설치되었는 지 확인한다. 아래 스크린샷처럼 나타난다면 설치가 완료된 것이다.
 
-```
+{% highlight shell linenos %}
 bazel build -c opt --define MEDIAPIPE_DISABLE_GPU=1 --action_env PYTHON_BIN_PATH="{Python이 설치된 경로}" mediapipe/examples/desktop/hello_world
-
 set GLOG_logtostderr=1
-
 bazel-bin\mediapipe\examples\desktop\hello_world\hello_world.exe
-```
+{% endhighlight%}
 
 <p><img src="/assets/images/22010130.png" /></p>

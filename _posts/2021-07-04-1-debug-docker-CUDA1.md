@@ -21,15 +21,15 @@ Docker에서 CUDA 컨테이너를 구축할 때 아래와 같은 오류가 발�
 libcuda.so.1 파일을 찾지 못해서 발생한 문제로 path를 추가해준다.
 
 [1] 컨테이너에서 해당 파일의 위치를 찾는다.
-```
+{% highlight shell linenos %}
 find /usr/ | grep libcuda.so.1
-```
+{% endhighlight %}
 
 <p style="background-color:black;"><img src="/assets/images/21092102.png" /></p>
 
 [2] Dockerfile에서 LIBRARY_PATH를 추가한다.
-```
+{% highlight docker linenos %}
 ENV LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/usr/local/cuda/lib64/stubs:/usr/local/cuda/compat
-```
+{% endhighlight %}
 
 <p style="background-color:black;"><img src="/assets/images/21092103.png" /></p>

@@ -31,9 +31,9 @@ Bazel 도전기 네번째 시간으로 Bazle 프로젝트를 하나하나 같이
 
 (1-3) CMD 창에 아래 명령어를 입력한다. 아래 이미지처럼 표시된다면 Bazel 프로젝트를 시작할 준비가 되었다는 뜻이다.
 
-```
+{% highlight shell linenos %}
 bazel info workspace
-```
+{% endhighlight %}
 
 <p class="code"><img src="/assets/images/21123131.png" /></p>
 
@@ -72,7 +72,7 @@ WORKSPACE 파일을 메모장이나 워드패드 등 문서 수정이 가능한 
 
 (3-2) 빌드 규칙을 아래와 같이 작성하여 저장한다.
 
-```
+{% highlight shell linenos %}
 android_sdk_repository(
     name = "androidsdk",
     path = "{Android Sdk 경로}",
@@ -87,7 +87,7 @@ http_archive(
 load("@rules_java//java:repositories.bzl", "rules_java_dependencies", "rules_java_toolchains")
 rules_java_dependencies()
 rules_java_toolchains()
-```
+{% endhighlight %}
 
 <p><img src="/assets/images/21123138.png" /></p>
 
@@ -113,7 +113,7 @@ rules_java_toolchains()
 
 (5-1) 아래 코드를 작성한 후 "app/java/com/example/helloworld" 경로 안에 "MainActivity.java"라는 이름으로 저장한다.
 
-```java
+{% highlight java linenos %}
 package com.example.helloworld;
 
 import android.app.Activity;
@@ -127,13 +127,13 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 }
-```
+{% endhighlight %}
 <p><img src="/assets/images/21123143.png" /></p>
 <p><img src="/assets/images/21123144.png" /></p>
 
 (5-2) 아래 코드를 작성한 뒤 "app/res/layout" 경로 안에 "activity_main.xml"라는 이름으로 저장한다.
 
-```xml
+{% highlight xml linenos %}
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -147,14 +147,14 @@ public class MainActivity extends Activity {
         android:text="Hello World!" />
 
 </FrameLayout>
-```
+{% endhighlight %}
 
 <p><img src="/assets/images/21123145.png" /></p>
 <p><img src="/assets/images/21123146.png" /></p>
 
 (5-3) 아래 코드를 작성한 뒤 "app" 경로 안에 "AndroidManifest.xml"라는 이름으로 저장한다.
 
-```xml
+{% highlight xml linenos %}
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.helloworld">
@@ -174,7 +174,7 @@ public class MainActivity extends Activity {
         android:targetSdkVersion="29" />
 
 </manifest>
-```
+{% endhighlight %}
 
 <p><img src="/assets/images/21123147.png" /></p>
 <p><img src="/assets/images/21123148.png" /></p>
@@ -183,7 +183,7 @@ public class MainActivity extends Activity {
 
 (6-1) 아래 코드를 작성한 뒤 "app" 경로 안에 "BUILD"라는 이름으로 저장한다. "BUILD" 파일은 빌드 시 타겟을 명시해주는 파일이다.
 
-```
+{% highlight shell linenos %}
 android_binary(
     name = "app",
     custom_package = "com.example.helloworld",
@@ -191,7 +191,7 @@ android_binary(
     srcs = ["java/com/example/helloworld/MainActivity.java"],
     resource_files = glob(["res/**"]),
 )
-```
+{% endhighlight %}
 
 <p><img src="/assets/images/21123149.png" /></p>
 <p><img src="/assets/images/21123150.png" /></p>
@@ -202,18 +202,18 @@ android_binary(
 
 (7-2) 아래 명령어로 프로젝트를 빌드한다.<br>Mediapipe 설치하기를 통해 관련 패키지들을 설치해야 제대로 실행된다.
 
-```
+{% highlight shell linenos %}
 bazel build //app:app
-```
+{% endhighlight %}
 
 <p class="code"><img src="/assets/images/22010126.png" /></p>
 
 (7-3) 이제 빌드 완료된 앱을 모바일 디바이스에서 실행시킬 차례이다.<br>
 아래 명렁어로 모바일 디바이스에 앱을 설치한다.
 
-```
+{% highlight shell linenos %}
 bazel mobile-install //app:app
-```
+{% endhighlight %}
 
 <p class="code"><img src="/assets/images/22010127.png" /></p>
 

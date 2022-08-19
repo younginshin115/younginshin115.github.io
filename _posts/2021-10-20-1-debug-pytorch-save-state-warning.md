@@ -22,9 +22,9 @@ Pytorch 기반 Distil-KoBERT를 학습시킬 때 아래와 같은 오류가 발�
 
 Torch 1.4.0 이후 버전에서 SAVE_STATE_WARNING 모듈이 삭제되어 발생한 오류로 Torch를 1.4.0 버전으로 다시 깔아주면 해결된다.
 
-```python
+{% highlight shell linenos %}
 pip install --user -q torch==1.4.0 -f https://download.pytorch.org/whl/cu111/torch_stable.html
-```
+{% endhighlight %}
 
 > repository 주소에서 CUDA 버전을 잘 확인해야 한다.
 

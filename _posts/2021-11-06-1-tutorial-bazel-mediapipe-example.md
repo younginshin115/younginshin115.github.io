@@ -88,7 +88,7 @@ _TENSORFLOW_SHA256<br>
 
 "# iOS basic build deps."라는 문장을 검색 후 그 위에 Android SDK와 NDK 로컬 경로를 삽입한다.
 
-```
+{% highlight shell linenos %}
 # You may run setup_android.sh to install Android SDK and NDK.
 android_sdk_repository(
     name = "androidsdk",
@@ -99,7 +99,7 @@ android_ndk_repository(
     name = "androidndk",
     path = "{로컬 NDK 경로}"
 )
-```
+{% endhighlight %}
 <p><img src="/assets/images/22010212.png" /></p>
 
 ## (3) 프로젝트 구조 만들기
@@ -124,7 +124,7 @@ android_ndk_repository(
 
 (4-1) 메모장이나 워드패드에 아래 코드를 작성한 후 "app/java/com/example/mediapipe/helloworld" 경로 안에 "MainActivity.java"라는 이름으로 저장한다.
 
-```java
+{% highlight java linenos %}
 package com.example.mediapipe.helloworld;
 
 import android.os.Bundle;
@@ -138,11 +138,11 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
   }
 }
-```
+{% endhighlight %}
 
 (4-2) 아래 코드를 작성한 뒤 "app/res/layout" 경로 안에 "activity_main.xml"라는 이름으로 저장한다.
 
-```xml
+{% highlight xml linenos %}
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -160,11 +160,11 @@ public class MainActivity extends AppCompatActivity {
     app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-```
+{% endhighlight %}
 
 (4-3) 아래 코드를 작성한 뒤 "app" 경로 안에 "AndroidManifest.xml"라는 이름으로 저장한다.
 
-```xml
+{% highlight xml linenos %}
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mediapipe.helloworld">
@@ -190,11 +190,11 @@ public class MainActivity extends AppCompatActivity {
   </application>
 
 </manifest>
-```
+{% endhighlight %}
 
 (4-4) 아래 코드를 작성한 뒤 "app" 경로 안에 "BUILD"라는 이름으로 저장한다. "BUILD" 파일은 빌드 시 타겟을 명시해주는 파일이다.
 
-```
+{% highlight shell linenos %}
 android_library(
     name = "basic_lib",
     custom_package = "com.example.mediapipe.helloworld",
@@ -220,22 +220,22 @@ android_binary(
         ":basic_lib",
     ],
 )
-```
+{% endhighlight %}
 
 (4-5) 마지막으로 아래 두 파일을 "app/res/values" 디렉토리에 생성한다.
 
 colors.xml
-```xml
+{% highlight xml linenos %}
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 </resources>
-```
+{% endhighlight %}
 
 styles.xml
-```xml
+{% highlight xml linenos %}
 <resources>
 
     <!-- Base application theme. -->
@@ -247,15 +247,15 @@ styles.xml
     </style>
 
 </resources>
-```
+{% endhighlight %}
 
 ## (5) 앱 빌드
 
 (5-1) CMD 창에서 아래와 같이 명령어를 입력하여 앱을 빌드한다.
 
-```
+{% highlight shell linenos %}
 bazel build -c opt --define MEDAPIPE_DISABLE_GPU=1 --action_env PYTHON_BIN_PATH="{Python 경로}" //app:helloworld
-```
+{% endhighlight %}
 
 <p><img src="/assets/images/22010218.png" /></p>
 
@@ -267,9 +267,9 @@ bazel build -c opt --define MEDAPIPE_DISABLE_GPU=1 --action_env PYTHON_BIN_PATH=
 
 (6-2) CMD 창에서 bazel-bin/app 폴더로 이동한 뒤 아래 명령어로 모바일 디바이스에 앱을 설치한다.
 
-```
+{% highlight shell linenos %}
 adb install helloworld.apk
-```
+{% endhighlight %}
 
 <p class="code"><img src="/assets/images/22010220.png" /></p>
 
