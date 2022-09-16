@@ -62,9 +62,20 @@ Bazel과 MediaPipe는 튜토리얼을 차례대로 따라왔다면 설치되어 
 (2-1) 프로젝트 폴더를 만든다. 나는 편의를 위하여 폴더명을 "mediapipe-hello-world"로 정했다.
 <p><img src="/assets/images/22010201.png" /></p>
 
-(2-2) 이전에 MediaPipe를 설치할 때 MediaPipe GitHub Repository를 클론해둔 곳으로 이동한다. Mediapipe는 Workspace 구성에 필요한 파일과 소스를 해당 Repository에서 제공한다. 아래 스크린샷에서 third_party 폴더부터 WORKSPACE 까지 모든 파일을 프로젝트 폴더로 옮긴다.
+(2-2) 이전에 MediaPipe를 설치할 때 MediaPipe GitHub Repository를 클론해둔 곳으로 이동한다. Mediapipe는 Workspace 구성에 필요한 파일과 소스를 공식 Repository에서 제공한다. 필요한 파일과 폴더를 프로젝트 폴더로 옮긴다. 필요한 파일/폴더 목록은 아래에 정리했다.
 
-<p><img src="/assets/images/22010202.png" /></p>
+|파일명|설명|
+|:--|:--|
+|thrid_party|빌드 스크립트를 모아둔 폴더.|
+|.bazelrc|Run Command 파일. 빌드 시 자동 실행될 스크립트.|
+|.bazelversion|빌드에 사용할 버전을 명시한 파일.|
+|.gitignore|(선택) Git 업로드 시 무시할 파일 목록.|
+|LICENSE|라이선스 관련 파일.|
+|requirements.txt|빌드에 필요한 Python 패키지를 명시한 파일.|
+|setup.py|빌드에 필요한 개발 환경을 구축해주는 Python 파일.|
+|setup_android_sdk_and_ndk.sh|Android SDK와 NDK를 설정하는 쉘스크립트 파일|
+|setup_opencv.sh|OpenCV를 설정하는 쉘스크립트 파일|
+|WORKSPACE|개발에 필요한 패키지를 자동으로 다운로드 받아 개발 환경을 구축해주는 파일|
 
 (2-3) WORKSPACE 파일에서 파일 경로가 변경되어 제대로 실행이 안되는 경우가 있으므로 아래와 같이 수정이 필요하다.
 
