@@ -14,10 +14,8 @@ tags:
 last_modified_at: 2022-09-27T21:18:00
 ---
 
-Bazel 공식 홈페이지에 나와있는 설치 튜토리얼을 그대로 따라하는 포스팅인점 참고 부탁드립니다.<br>
-(참조: <a href="https://google.github.io/mediapipe/getting_started/install.html#installing-on-debian-and-ubuntu">https://google.github.io/mediapipe/getting_started/install.html#installing-on-debian-and-ubuntu</a>)
-
-언어의 제약을 많이 받지 않는 빌드 툴인 Bazel을 WSL에 설치하는 튜토리얼입니다.
+Bazel 공식 홈페이지의 안내에 따라 WSL에 Bazel을 설치합니다.<br>
+(참조: <a href="https://docs.bazel.build/versions/main/install-ubuntu.html">https://docs.bazel.build/versions/main/install-ubuntu.html</a>)
 
 ## (1) 패키지에 Bazel을 추가합니다.
 
