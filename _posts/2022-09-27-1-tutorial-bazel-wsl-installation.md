@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][Bazel] 220927 WSL에 Bazel 설치하기"
+title:  "[Tutorial][Bazel] 220927 WSL Ubuntu 20.04에 Bazel 설치하기"
 excerpt: "Android에 머신러닝 탑재하기"
 
 toc: true
@@ -11,6 +11,7 @@ tags:
   - Tutorial
   - Bazel
   - WSL
+  - Ubuntu
 last_modified_at: 2022-09-27T21:18:00
 ---
 

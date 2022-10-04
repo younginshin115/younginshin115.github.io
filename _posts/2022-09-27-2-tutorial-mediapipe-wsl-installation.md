@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][Bazel] 220927 WSL에 Mediapipe 설치하기"
+title:  "[Tutorial][Bazel] 220927 WSL Ubuntu 20.04에 Mediapipe 설치하기"
 excerpt: "Android에 머신러닝 탑재하기"
 
 toc: true
@@ -11,6 +11,7 @@ tags:
   - Tutorial
   - Mediapipe
   - WSL
+  - Ubuntu
 last_modified_at: 2022-09-27T21:40:00
 ---
 
