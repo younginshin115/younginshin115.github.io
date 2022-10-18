@@ -1,10 +1,9 @@
 ---
-title:  "[Tutorial][Bazel-MediaPipe] 221016 WSL Ubuntu 20.04 Bazel MediaPipe - Hello world"
+title:  "[Tutorial][Bazel-MediaPipe] 221018 WSL Ubuntu 20.04 Bazel MediaPipe - Hello world"
 excerpt: "Android에 머신러닝 탑재하기"
 
 toc: true
 toc_sticky: true
-published: false
 categories:
   - Tutorial
 tags:
@@ -15,7 +14,7 @@ tags:
   - Helloworld
   - WSL
   - Ubuntu
-last_modified_at: 2022-10-16T19:46:00
+last_modified_at: 2022-10-18T21:40:00
 ---
 
 이번 시간에는 Mediapipe 공식 홈페이지에 나와있는 Hello world 예제를 하나하나 따라하며 Bazel 빌드까지 완료합니다. MediaPipe 공식 홈페이지 Android용 튜토리얼은 아래 링크를 통해 확인할 수 있습니다.<br>
@@ -27,7 +26,7 @@ last_modified_at: 2022-10-16T19:46:00
 1. Bazel 설치(<a href="/tutorial/1-tutorial-bazel-wsl-installation/">링크</a>)
 2. MediaPipe 설치(<a href="/tutorial/1-tutorial-mediapipe-wsl-installation/">링크</a>)
 3. Java 설치 및 JAVA_HOME 설정
-4. ADB(Android Debug Bridge) 설치
+4. Andriod SDK 설치 - ADB 사용(<a href="/tutorial/1-tutorial-wsl-android-sdk-installation/">링크</a>)
 
 ## (2) Workspace 만들기
 
@@ -271,7 +270,7 @@ bazel build -c opt --define MEDAPIPE_DISABLE_GPU=1 //app:helloworld
 adb install helloworld.apk
 {% endhighlight %}
 
-<p class="code"><img src="/assets/images/22010220.png" /></p>
+<p class="code"><img src="/assets/images/22101813.png" /></p>
 
 (6-3) 아래처럼 BUILD 파일에 설정한 이름대로 앱이 설치된 것을 확인할 수 있고 설치된 앱을 실행해보면 Hellow World가 정상적으로 출력되는 것 또한 확인할 수 있습니다.
 
