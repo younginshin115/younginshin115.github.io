@@ -1,6 +1,6 @@
 ---
-title:  "[Tutorial][Android] 221018 WSL Ubuntu 20.04 Android SDK 설치"
-excerpt: "Android에 Mediapipe 탑재하기(3)"
+title:  "[Tutorial][MediaPipe] 221018 WSL Ubuntu 20.04 MediaPipe - Android SDK 설치"
+excerpt: "Android에 MediaPipe 탑재하기(3)"
 
 categories:
   - Tutorial

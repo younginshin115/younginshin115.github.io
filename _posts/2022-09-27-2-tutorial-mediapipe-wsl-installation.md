@@ -1,6 +1,6 @@
 ---
-title:  "[Tutorial][Bazel] 220927 WSL Ubuntu 20.04에 Mediapipe 설치하기"
-excerpt: "Android에 Mediapipe 탑재하기(2)"
+title:  "[Tutorial][MediaPipe] 220927 WSL Ubuntu 20.04 Mediapipe - MediaPipe 설치"
+excerpt: "Android에 MediaPipe 탑재하기(2)"
 
 toc: true
 toc_sticky: true
@@ -9,16 +9,16 @@ categories:
   - Tutorial
 tags:
   - Tutorial
-  - Mediapipe
+  - MediaPipe
   - WSL
   - Ubuntu
 last_modified_at: 2022-09-27T21:40:00
 ---
 
-Mediapipe 공식 홈페이지의 안내에 따라 WSL에 Mediapipe를 설치합니다.<br>
+MediaPipe 공식 홈페이지의 안내에 따라 WSL에 MediaPipe를 설치합니다.<br>
 (참조: <a href="https://google.github.io/mediapipe/getting_started/install.html#installing-on-debian-and-ubuntu">https://google.github.io/mediapipe/getting_started/install.html#installing-on-debian-and-ubuntu</a>)
 
-## (1) Mediapipe Repository를 클론합니다.
+## (1) MediaPipe Repository를 클론합니다.
 
 {% highlight shell linenos %}
 git clone https://github.com/google/mediapipe.git
@@ -46,7 +46,7 @@ sudo apt-get install -y \
 
 <p><img src="/assets/images/22092705.png" /></p>
 
-## (4) 제대로 설치되었는지 확인하기 위해 Mediapipe에서 제공하는 Hello World를 빌드합니다.
+## (4) 제대로 설치되었는지 확인하기 위해 MediaPipe에서 제공하는 Hello World를 빌드합니다.
 
 {% highlight shell linenos %}
 bazel run --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/hello_world:hello_world

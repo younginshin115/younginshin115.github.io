@@ -1,6 +1,6 @@
 ---
-title:  "[Tutorial][Bazel-MediaPipe] 221028 WSL Ubuntu 20.04 Bazel MediaPipe Android App build"
-excerpt: "Android에 Mediapipe 탑재하기(6)"
+title:  "[Tutorial][Bazel-MediaPipe] 221030 WSL Ubuntu 20.04 MediaPipe - Bazel Build"
+excerpt: "Android에 MediaPipe 탑재하기(5)"
 
 toc: true
 toc_sticky: true
@@ -11,12 +11,12 @@ tags:
   - Tutorial
   - Android
   - Bazel
-  - Mediapipe
+  - MediaPipe
   - WSL
-last_modified_at: 2022-10-28T20:17:00
+last_modified_at: 2022-10-30T21:01:00
 ---
 
-Android에 머신러닝 탑재하기 여섯번째 시간입니다. Android에 Mediapipe를 탑재하는 방법은 총 두가지입니다. 첫번째는 Mediapipe 공식 홈페이지에 나와있는 대로 Bazel을 사용하여 빌드하는 것이고 두번째는 Mediapipe로 aar(안드로이드 라이브러리)를 빌드하여 탑재하는 것입니다. 이번 시간에는 첫번째 방식으로 진행합니다. Mediapipe 공식 홈페이지의 Android용 튜토리얼을 참고했습니다. MediaPipe 공식 홈페이지 Android용 튜토리얼은 아래 링크를 통해 확인할 수 있습니다.<br>
+Android에 머신러닝 탑재하기 여섯번째 시간입니다. Android에 MediaPipe를 탑재하는 방법은 총 두가지입니다. 첫번째는 MediaPipe 공식 홈페이지에 나와있는 대로 Bazel을 사용하여 빌드하는 것이고 두번째는 MediaPipe로 aar(안드로이드 라이브러리)를 빌드하여 탑재하는 것입니다. 이번 시간에는 첫번째 방식으로 진행합니다. MediaPipe 공식 홈페이지의 Android용 튜토리얼을 참고했습니다. MediaPipe 공식 홈페이지 Android용 튜토리얼은 아래 링크를 통해 확인할 수 있습니다.<br>
 링크: <a href="https://google.github.io/mediapipe/getting_started/hello_world_android.html">https://google.github.io/mediapipe/getting_started/hello_world_android.html</a>
 
 ## (1) 프로젝트 준비 - 필요한 사항 점검하기
@@ -24,9 +24,9 @@ Android에 머신러닝 탑재하기 여섯번째 시간입니다. Android에 Me
 프로젝트를 진행하기 위해서 아래와 같이 환경이 구성되어 있어야 합니다.
 1. Bazel 설치(<a href="/tutorial/1-tutorial-bazel-wsl-installation/">링크</a>)
 2. MediaPipe 설치(<a href="/tutorial/1-tutorial-mediapipe-wsl-installation/">링크</a>)
-3. Java 설치 및 JAVA_HOME 설정
-4. Python 3 설치 및 PYTHON_BIN_PATH 설정
-4. Andriod SDK 설치 - ADB 사용(<a href="/tutorial/1-tutorial-wsl-android-sdk-installation/">링크</a>)
+3. Andriod SDK 설치 - ADB 사용(<a href="/tutorial/1-tutorial-wsl-android-sdk-installation/">링크</a>)
+4. Java 설치 및 JAVA_HOME 설정
+5. Python 3 설치 및 PYTHON_BIN_PATH 설정
 
 ## (2) Workspace 만들기
 
@@ -38,18 +38,10 @@ sudo mkdir mediapipe-edge-detection
 
 <p><img src="/assets/images/22102801.png" /></p>
 
-(2-2) 이전에 MediaPipe를 설치할 때 MediaPipe GitHub Repository를 클론해둔 곳으로 이동합니다. Mediapipe는 Workspace 구성에 필요한 파일과 소스를 공식 Repository에서 제공합니다. 필요한 파일과 폴더를 프로젝트 폴더로 옮깁니다. 필요한 파일/폴더 목록은 아래에 정리했습니다.
+(2-2) 이전에 MediaPipe를 설치할 때 MediaPipe GitHub Repository를 클론해둔 곳으로 이동합니다. MediaPipe는 Workspace 구성에 필요한 파일과 소스를 공식 Repository에서 제공합니다. 필요한 파일과 폴더를 프로젝트 폴더로 옮깁니다. 필요한 파일/폴더 목록은 아래에 정리했습니다.
 
 |파일명|설명|
 |:--|:--|
-|mediapipe/java/com/google/mediapipe/components|이번 프로젝트에 사용할 components들이 들어있는 폴더|
-|mediapipe/java/com/google/mediapipe/framework|components를 사용하기 위해 필요한 폴더|
-|mediapipe/java/com/google/mediapipe/BUILD|components를 사용하기 위해 필요한 BUILD 파일|
-|mediapipe/graphs/edge_detection|이번 프로젝트에 사용할 edge_detection graph 폴더|
-|mediapipe/calculators|graph를 사용하기 위해 필요한 폴더|
-|mediapipe/util|graph를 사용하기 위해 필요한 폴더|
-|mediapipe/gpu|graph를 사용하기 위해 필요한 폴더|
-|mediapipe/BUILD|graph를 사용하기 위해 필요한 파일|
 |thrid_party|빌드 스크립트를 모아둔 폴더.|
 |.bazelrc|Run Command 파일. 빌드 시 자동 실행될 스크립트.|
 |.bazelversion|빌드에 사용할 버전을 명시한 파일.|
@@ -109,9 +101,7 @@ sudo mkdir layout values
 
 <p><img src="/assets/images/22102805.png" /></p>
 
-## (4) 소스 코드 작성 - 카메라 권한 허용
-
-(4-1) 이번 프로젝트는 지난 번에 했던 Hello world 프로젝트(<a href="/tutorial/2-tutorial-mediapipe-wsl-helloworld/">링크</a>)를 확장하는 식으로 진행됩니다. 기존 파일이 없다면 다음 Repository에서 소스 코드를 확인할 수 있습니다. (<a href="https://github.com/younginshin115/mediapipe-hello-world">링크</a>)
+(3-5) 이번 프로젝트는 지난 번에 했던 Hello world 프로젝트(<a href="/tutorial/2-tutorial-mediapipe-wsl-helloworld/">링크</a>)를 확장하는 식으로 진행됩니다. 기존 파일이 없다면 다음 Repository에서 소스 코드를 확인할 수 있습니다. (<a href="https://github.com/younginshin115/mediapipe-hello-world">링크</a>)
 
 아래 6개 파일을 각자 맞는 위치에 옮깁니다.
 
@@ -124,7 +114,9 @@ sudo mkdir layout values
 |colors.xml|app/res/values|
 |styles.xml|app/res/values|
 
-(4-2) "app" 경로 아래 "AndroidManifest.xml" 파일에 카메라 기능을 사용하기 위한 코드를 추가합니다.
+## (4) 소스 코드 작성 - 카메라 권한 허용
+
+(4-1) "app" 경로 아래 "AndroidManifest.xml" 파일에 카메라 기능을 사용하기 위한 코드를 추가합니다.
 
 {% highlight xml linenos %}
 <?xml version="1.0" encoding="utf-8"?>
@@ -159,7 +151,19 @@ sudo mkdir layout values
 </manifest>
 {% endhighlight %}
 
-(4-3) "app" 경로 아래 "BUILD" 파일에 카메라 권한 허용을 사용자에게 물어보기 위해 Mediapipe에서 제공하는 PemissionHelper의 Dependency를 추가합니다. 추가된 코드는 아래 10열에서 확인할 수 있습니다. 3열과 16열의 패키지명, 4열의 소스 경로, 15열의 이름, 19열의 앱 이름도 맞춰서 바꿔줍니다.
+(4-2) 카메라 권한 허용을 사용자에게 물어보기 위해 MediaPipe에서 제공하는 컴포넌트인 PemissionHelper를 추가해야합니다. 관련 리소스는 MediaPipe 공식 리포지토리에서 확인할 수 있습니다. 이전에 git clone 해두었던 폴더로 이동하여 필요한 리소스를 프로젝트 디렉토리로 복사합니다. 필요한 리소스는 아래 명시했습니다.
+
+|파일명|설명|
+|:--|:--|
+|mediapipe/java/com/google/mediapipe/components|이번 프로젝트에 사용할 Components 폴더|
+|mediapipe/java/com/google/mediapipe/framework|Components 빌드시 필요한 Framework 폴더|
+|mediapipe/java/com/google/mediapipe/glutil|Components 빌드시 필요한 GLUtils 폴더|
+|mediapipe/java/com/google/mediapipe/BUILD|Components 빌드 파일|
+|mediapipe/framework|Components 빌드시 필요한 Framework 폴더|
+
+<p><img src="/assets/images/22103001.png" /></p>
+
+(4-3) "app" 경로 아래 "BUILD" 파일에 PemissionHelper의 Dependency를 추가합니다. 추가된 코드는 아래 10열에서 확인할 수 있습니다. 3열과 16열의 패키지명, 4열의 소스 경로, 15열의 이름, 19열의 앱 이름도 맞춰서 바꿔줍니다.
 
 {% highlight shell linenos %}
 android_library(
@@ -237,8 +241,8 @@ public class MainActivity extends AppCompatActivity {
 bazel build -c opt --define MEDAPIPE_DISABLE_GPU=1 //app:edgedetection
 {% endhighlight %}
 
-<p><img src="/assets/images/22091803.png" /></p>
-<p><img src="/assets/images/22091804.png" /></p>
+<p><img src="/assets/images/22103003.png" /></p>
+<p><img src="/assets/images/22103002.png" /></p>
 
 > 만약 빌드 중 pip로 numpy가 설치되어있는데도 불구하고 Is numpy installed? 이슈가 발생한다면 아래 명령어로 numpy를 설치해주시기 바랍니다.
 
@@ -248,69 +252,15 @@ sudo apt install python-numpy
 
 <p><img src="/assets/images/22102806.png" /></p>
 
-
-
-> 만약 빌드 중 file '@bazel_tools//tools/cpp:toolchain_utils.bzl' does not contain symbol 'use_cpp_toolchain' (did you mean 'find_cpp_toolchain'?) 이슈가 발생한다면 아래 WORKSPACE의 아래 부분을 다음과 같이 수정합니다. 해결 방법은 다음 링크를 참고했습니다. (<a href="https://github.com/google/mediapipe/issues/3457#issuecomment-1164620044">링크</a>)
-
-<p><img src="/assets/images/22091802.png" /></p>
-
-수정 전
-{% highlight shell linenos %}
-http_archive(
-    name = "rules_cc",
-    strip_prefix = "rules_cc-main",
-    urls = ["https://github.com/bazelbuild/rules_cc/archive/main.zip"],
-)
-{% endhighlight %}
-
-수정 후
-{% highlight shell linenos %}
-http_archive(
-    name = "rules_cc",
-    strip_prefix = "rules_cc-8bb0eb5c5ccd96b91753bb112096bb6993d16d13",
-    urls = ["https://github.com/bazelbuild/rules_cc/archive/8bb0eb5.zip"],
-)
-{% endhighlight %}
-
-> 만약 빌드 중 Error applying patch C:/users/{유저명}/androidstudioprojects/mediapipe-edge-detection/third_party/com_google_protobuf_fixes.diff: Incorrect Chunk: the chunk content doesn't match the target 이슈가 발생한다면 아래와 같이 WORKSPACE를 수정합니다.
-
-<p><img src="/assets/images/22091805.png" /></p>
-
-수정 전
-{% highlight shell linenos %}
-http_archive(
-    name = "com_google_protobuf",
-    sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
-    strip_prefix = "protobuf-3.19.1",
-    urls = ["https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz"],
-    patches = [
-        "@//third_party:com_google_protobuf_fixes.diff"
-    ],
-    patch_args = [
-        "-p1",
-    ],
-)
-{% endhighlight %}
-
-수정 후
-{% highlight shell linenos %}
-http_archive(
-    name = "com_google_protobuf",
-    sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
-    strip_prefix = "protobuf-3.19.1",
-    urls = ["https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz"],
-)
-{% endhighlight %}
-
-(4-6) 아래 명령어로 빌드한 앱을 모바일 디바이스에 설치한다.
+(4-6) 아래 명령어로 빌드한 앱을 모바일 디바이스에 설치합니다.
 
 {% highlight shell linenos %}
-adb install .\bazel-bin\app\edgedetection.apk
+adb install ./bazel-bin/app/edgedetection.apk
 {% endhighlight %}
 
-<p><img src="/assets/images/22091806.png" /></p>
+<p><img src="/assets/images/22103004.png" /></p>
 
-설치한 앱을 시작했을 때 아래 이미지처럼 권한을 확인하는 창이 나타나면 이번 단계는 성공적으로 완료된 것이다.
+설치한 앱을 시작했을 때 아래 이미지처럼 권한을 확인하는 창이 나타나면 이번 단계는 성공적으로 완료된 것입니다.
 
 <p><img style="min-width: 250px;" width="30%" src="/assets/images/22091807.jpg" /></p>
 
@@ -365,8 +315,8 @@ import com.google.mediapipe.components.PermissionHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SurfaceTexture previewFrameTexture; // SurfaceTexture 오브젝트 추가
-    private SurfaceView previewDisplayView; // SurfaceView 오브젝트 추가
+    private SurfaceTexture previewFrameTexture; // SurfaceTexture 오브젝트 선언
+    private SurfaceView previewDisplayView; // SurfaceView 오브젝트 선언
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -455,7 +405,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SurfaceTexture previewFrameTexture;
     private SurfaceView previewDisplayView;
-    private CameraXPreviewHelper cameraHelper; // CameraXPreviewHelper 오브젝트 추가
+    private CameraXPreviewHelper cameraHelper; // CameraXPreviewHelper 오브젝트 선언
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -596,7 +546,7 @@ public class MainActivity extends AppCompatActivity {
     private SurfaceTexture previewFrameTexture;
     private SurfaceView previewDisplayView;
     private CameraXPreviewHelper cameraHelper;
-    private ApplicationInfo applicationInfo; // ApplicationInfo 오브젝트 추가
+    private ApplicationInfo applicationInfo; // ApplicationInfo 오브젝트 선언
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -658,7 +608,7 @@ public class MainActivity extends AppCompatActivity {
 
 ## (6) 소스 코드 작성 - 화면 구현
 
-(6-1) 카메라 화면을 실시간으로 보여주기위해 "app" 경로 아래 "BUILD" 파일에 두가지를 추가 해아합니다. 첫번째는 OpenGL ES texture입니다.  관련 Dependency를 추가합니다. 추가한 코드는 12열에서 확인할 수 있습니다.
+(6-1) 카메라 화면을 실시간으로 보여주기위해 OpenGL ES texture가 필요합니다. "app" 경로 아래 "BUILD" 파일에 관련 Dependency를 추가합니다. 추가한 코드는 12열에서 확인할 수 있습니다.
 
 {% highlight shell linenos %}
 android_library(
@@ -722,8 +672,8 @@ public class MainActivity extends AppCompatActivity {
     private SurfaceView previewDisplayView;
     private CameraXPreviewHelper cameraHelper;
     private ApplicationInfo applicationInfo;
-    private EglManager eglManager; // EglManager 오브젝트 추가
-    private ExternalTextureConverter converter; // ExternalTextureConverter 오브젝트 추가
+    private EglManager eglManager; // EglManager 오브젝트 선언
+    private ExternalTextureConverter converter; // ExternalTextureConverter 오브젝트 선언
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -812,7 +762,18 @@ public class MainActivity extends AppCompatActivity {
 }
 {% endhighlight %}
 
-(6-3) "app" 경로 아래 "BUILD" 파일에 추가해야하는 두번째는 MediaPipe graph입니다. MediaPipe graph는 MediaPipe에서 제공하는 framework입니다. JNI 코드를 사용하기 위해 아래와 같이 코드를 추가합니다. 추가된 코드는 16~29열과 43열에서 확인할 수 있습니다.
+(6-3) Mediapipe Graph 관련 리소스를 프로젝트 디렉토리로 복사합니다. Mediapipe Graph란 간단히 말해서 데이터 변환이나 예측 등 Mediapipe의 연산을 수행하는 일종의 네트워크라고 생각하면 됩니다. Mediapipe Graph 관련 리소스는 MediaPipe 공식 리포지토리에서 확인할 수 있습니다. 이전에 git clone 해두었던 폴더로 이동하여 필요한 리소스를 프로젝트 디렉토리로 복사합니다. 필요한 리소스는 아래 명시했습니다.
+
+|파일명|설명|
+|:--|:--|
+|mediapipe/graphs/edge_detection|이번 프로젝트에 사용할 edge_detection graph 폴더|
+|mediapipe/calculators|Graph Caculators 디렉토리|
+|mediapipe/util|Graph Utils 디렉토리|
+|mediapipe/gpu|Graph GPU 가속 관련 디렉토리|
+|mediapipe/BUILD|Graph 빌드 파일|
+
+
+(6-4) "app" 경로 아래 "BUILD" 파일에 MediaPipe graph를 사용하기 위한 코드를 추가합니다. 추가된 코드는 13열과 17~30열, 44열에서 확인할 수 있습니다.
 
 {% highlight shell linenos %}
 android_library(
@@ -827,6 +788,7 @@ android_library(
         "//mediapipe/java/com/google/mediapipe/components:android_components",
         "//mediapipe/java/com/google/mediapipe/components:android_camerax_helper",
         "//mediapipe/java/com/google/mediapipe/glutil",
+        "//mediapipe/java/com/google/mediapipe/framework:android_framework",
     ],
 )
 
@@ -862,7 +824,7 @@ android_binary(
 )
 {% endhighlight %}
 
-(6-4) MediaPipe graph 중 어떤 graph를 사용할 지 "app" 경로 아래 "BUILD" 파일에 명시해줍니다. 추가된 코드는 21열과 34~37열, 44~46열에서 확인할 수 있습니다.
+(6-5) "app" 경로 아래 "BUILD" 파일에 MediaPipe Graph 중 어떤 Graph를 사용할 지 명시해줍니다. 추가된 코드는 22열과 35~38열, 45~47열에서 확인할 수 있습니다.
 
 {% highlight shell linenos %}
 android_library(
@@ -877,6 +839,7 @@ android_library(
         "//mediapipe/java/com/google/mediapipe/components:android_components",
         "//mediapipe/java/com/google/mediapipe/components:android_camerax_helper",
         "//mediapipe/java/com/google/mediapipe/glutil",
+        "//mediapipe/java/com/google/mediapipe/framework:android_framework",
     ],
 )
 
@@ -920,7 +883,7 @@ android_binary(
 )
 {% endhighlight %}
 
-(6-5) 이제 MediaPipe graph를 "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 적용합니다.
+(6-6) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 MediaPipe Graph를 사용하기 위한 Asset Manager를 추가합니다.
 
 {% highlight java linenos %}
 package com.example.mediapipe.edgedetection;
@@ -941,6 +904,7 @@ import com.google.mediapipe.components.CameraHelper;
 import com.google.mediapipe.components.PermissionHelper;
 import com.google.mediapipe.components.CameraXPreviewHelper;
 import com.google.mediapipe.components.ExternalTextureConverter;
+import com.google.mediapipe.framework.AndroidAssetUtil; // AndroidAssetUtil import
 import com.google.mediapipe.glutil.EglManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -968,6 +932,8 @@ public class MainActivity extends AppCompatActivity {
         previewDisplayView = new SurfaceView(this);
         setupPreviewDisplayView();
 
+        AndroidAssetUtil.initializeNativeAssetManager(this); // egl 매니저를 초기화 하기 전에 MediaPipe Graph를 사용하기 위한 asset manager 초기화
+
         eglManager = new EglManager(null);
 
         PermissionHelper.checkAndRequestCameraPermissions(this);
@@ -983,7 +949,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        converter = new ExternalTextureConverter(eglManager.getContext()); // ExternalTextureConverter 초기화
+        converter = new ExternalTextureConverter(eglManager.getContext());
         if (PermissionHelper.cameraPermissionsGranted(this)) {
             startCamera();
         }
@@ -1037,3 +1003,162 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 {% endhighlight %}
+
+(6-7) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 카메라 프레임을 Mediapipe에서 사용할 수 있는 형태로 변환하여 전송하는 Frame Processor를 추가합니다.
+
+{% highlight java linenos %}
+package com.example.mediapipe.edgedetection;
+
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Bundle;
+import android.graphics.SurfaceTexture;
+import android.util.Log;
+import android.util.Size;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.mediapipe.components.CameraHelper;
+import com.google.mediapipe.components.PermissionHelper;
+import com.google.mediapipe.components.CameraXPreviewHelper;
+import com.google.mediapipe.components.ExternalTextureConverter;
+import com.google.mediapipe.components.FrameProcessor; // FrameProcessor Import 
+import com.google.mediapipe.framework.AndroidAssetUtil;
+import com.google.mediapipe.glutil.EglManager;
+
+public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+
+    private SurfaceTexture previewFrameTexture;
+    private SurfaceView previewDisplayView;
+    private CameraXPreviewHelper cameraHelper;
+    private ApplicationInfo applicationInfo;
+    private EglManager eglManager;
+    private ExternalTextureConverter converter;
+    private FrameProcessor processor; // FrameProcessor 오브젝트 선언
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        try {
+            applicationInfo =
+                getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+        } catch (NameNotFoundException e) {
+            Log.e(TAG, "Cannot find application info: " + e);
+        }
+
+        previewDisplayView = new SurfaceView(this);
+        setupPreviewDisplayView();
+
+        AndroidAssetUtil.initializeNativeAssetManager(this);
+
+        eglManager = new EglManager(null);
+
+        // EGL Manager 초기화 후 Frame Processor 초기화
+        processor = new FrameProcessor(
+          this,
+          eglManager.getNativeContext(),
+          applicationInfo.metaData.getString("binaryGraphName"),
+          applicationInfo.metaData.getString("inputVideoStreamName"),
+          applicationInfo.metaData.getString("outputVideoStreamName")
+        );
+
+        PermissionHelper.checkAndRequestCameraPermissions(this);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(
+        int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionHelper.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        converter = new ExternalTextureConverter(eglManager.getContext());
+        if (PermissionHelper.cameraPermissionsGranted(this)) {
+            startCamera();
+        }
+        converter.setConsumer(processor); // 변환된 프레임을 proccessor로 전송
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        converter.close();
+    }
+
+    private void setupPreviewDisplayView() {
+        previewDisplayView.setVisibility(View.GONE);
+        ViewGroup viewGroup = findViewById(R.id.preview_display_layout);
+        viewGroup.addView(previewDisplayView);
+
+        previewDisplayView
+        .getHolder()
+        .addCallback(
+            new SurfaceHolder.Callback() {
+            @Override
+            public void surfaceCreated(SurfaceHolder holder) {
+              processor.getVideoSurfaceOutput().setSurface(holder.getSurface()); // processor의 결과물을 View로 전송
+            }
+
+            @Override
+            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+                Size viewSize = new Size(width, height);
+                Size displaySize = cameraHelper.computeDisplaySizeFromViewSize(viewSize);
+
+                converter.setSurfaceTextureAndAttachToGLContext(
+                    previewFrameTexture, displaySize.getWidth(), displaySize.getHeight());
+            }
+
+            @Override
+            public void surfaceDestroyed(SurfaceHolder holder) {
+              processor.getVideoSurfaceOutput().setSurface(null); // surface destroy시 초기화
+            }
+            });
+    }
+
+    public void startCamera() {
+        cameraHelper = new CameraXPreviewHelper();
+        cameraHelper.setOnCameraStartedListener(
+            surfaceTexture -> {
+                previewFrameTexture = surfaceTexture;
+                previewDisplayView.setVisibility(View.VISIBLE);
+        });
+
+        CameraHelper.CameraFacing cameraFacing =
+            applicationInfo.metaData.getBoolean("cameraFacingFront", false)
+                ? CameraHelper.CameraFacing.FRONT
+                : CameraHelper.CameraFacing.BACK;
+        cameraHelper.startCamera(this, cameraFacing, /*unusedSurfaceTexture=*/ null);
+    }
+}
+{% endhighlight %}
+
+## (7) 앱 빌드
+
+(7-1) 이제 아래와 같이 명령어를 입력하여 앱을 빌드합니다.
+
+{% highlight shell linenos %}
+bazel build -c opt --define MEDAPIPE_DISABLE_GPU=1 //app:edgedetection
+{% endhighlight %}
+
+<p><img src="/assets/images/22103003.png" /></p>
+
+<p><img src="/assets/images/22103005.png" /></p>
+
+## (8) 앱 설치
+
+(8-1) 아래 명령어로 빌드한 앱을 모바일 디바이스에 설치합니다.
+
+{% highlight shell linenos %}
+adb install ./bazel-bin/app/edgedetection.apk
+{% endhighlight %}
+
+<p><img src="/assets/images/22103004.png" /></p>

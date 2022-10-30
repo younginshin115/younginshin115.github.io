@@ -1,6 +1,6 @@
 ---
-title:  "[Tutorial][Bazel-MediaPipe] 221018 WSL Ubuntu 20.04 Bazel MediaPipe - Hello world"
-excerpt: "Android에 Mediapipe 탑재하기(4)"
+title:  "[Tutorial][MediaPipe] 221018 WSL Ubuntu 20.04 MediaPipe - Hello world"
+excerpt: "Android에 MediaPipe 탑재하기(4)"
 
 toc: true
 toc_sticky: true
@@ -10,14 +10,14 @@ tags:
   - Tutorial
   - Android
   - Bazel
-  - Mediapipe
+  - MediaPipe
   - Helloworld
   - WSL
   - Ubuntu
 last_modified_at: 2022-10-18T21:40:00
 ---
 
-이번 시간에는 Mediapipe 공식 홈페이지에 나와있는 Hello world 예제를 하나하나 따라하며 Bazel 빌드까지 완료합니다. MediaPipe 공식 홈페이지 Android용 튜토리얼은 아래 링크를 통해 확인할 수 있습니다.<br>
+이번 시간에는 MediaPipe 공식 홈페이지에 나와있는 Hello world 예제를 하나하나 따라하며 Bazel 빌드까지 완료합니다. MediaPipe 공식 홈페이지 Android용 튜토리얼은 아래 링크를 통해 확인할 수 있습니다.<br>
 링크: <a href="https://google.github.io/mediapipe/getting_started/hello_world_android.html">https://google.github.io/mediapipe/getting_started/hello_world_android.html</a>
 
 ## (1) 프로젝트 준비
@@ -38,7 +38,7 @@ sudo mkdir mediapipe-hello-world
 
 <p><img src="/assets/images/22101601.png" /></p>
 
-(2-2) 이전에 MediaPipe를 설치할 때 MediaPipe GitHub Repository를 클론해둔 곳으로 이동합니다. Mediapipe는 Workspace 구성에 필요한 파일과 소스를 공식 Repository에서 제공합니다. 필요한 파일과 폴더를 프로젝트 폴더로 옮깁니다. 필요한 파일/폴더 목록은 아래에 정리했습니다.
+(2-2) 이전에 MediaPipe를 설치할 때 MediaPipe GitHub Repository를 클론해둔 곳으로 이동합니다. MediaPipe는 Workspace 구성에 필요한 파일과 소스를 공식 Repository에서 제공합니다. 필요한 파일과 폴더를 프로젝트 폴더로 옮깁니다. 필요한 파일/폴더 목록은 아래에 정리했습니다.
 
 |파일명|설명|
 |:--|:--|
@@ -248,7 +248,7 @@ bazel build -c opt --define MEDAPIPE_DISABLE_GPU=1 //app:helloworld
 
 <p><img src="/assets/images/22101613.png" /></p>
 
-(6-2) bazel-bin/app 폴더로 이동한 뒤 아래 명령어로 모바일 디바이스에 앱을 설치합니다.
+(6-2) "bazel-bin/app" 디렉토리로 이동한 뒤 아래 명령어로 모바일 디바이스에 앱을 설치합니다.
 
 {% highlight shell linenos %}
 adb install helloworld.apk
