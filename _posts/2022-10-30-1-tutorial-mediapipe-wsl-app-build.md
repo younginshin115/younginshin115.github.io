@@ -824,7 +824,7 @@ android_binary(
 )
 {% endhighlight %}
 
-(6-5) "app" 경로 아래 "BUILD" 파일에 MediaPipe Graph 중 어떤 Graph를 사용할 지 명시해줍니다. 추가된 코드는 22열과 35~38열, 45~47열에서 확인할 수 있습니다.
+(6-5) "app" 경로 아래 "BUILD" 파일에 MediaPipe Graph 중 어떤 Graph를 사용할 지 명시해줍니다. 추가된 코드는 22열과 35~38열, 41열, 46~48열에서 확인할 수 있습니다.
 
 {% highlight shell linenos %}
 android_library(
@@ -868,6 +868,7 @@ android_binary(
     custom_package = "com.example.mediapipe.edgedetection",
     manifest = "AndroidManifest.xml",
     manifest_values = {
+        "applicationId": "com.example.mediapipe.edgedetection",
         "appName": "MediaPipe Edge Detection",
         "mainActivity": ".MainActivity",
         "cameraFacingFront": "False",
