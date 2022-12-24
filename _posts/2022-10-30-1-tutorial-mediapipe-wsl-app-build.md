@@ -130,7 +130,7 @@ sudo mkdir layout values
   <!-- 최소 SDK 버전을 21로 수정 -->
   <uses-sdk
       android:minSdkVersion="21"
-      android:targetSdkVersion="31" />
+      android:targetSdkVersion="27" />
 
   <application
       android:allowBackup="true"
@@ -387,7 +387,7 @@ android_binary(
 )
 {% endhighlight %}
 
-(5-4) 이제 비워두었던 StartCamera 함수를 구현합니다.
+(5-4) 이제 "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 비워두었던 StartCamera 함수를 구현합니다.
 
 {% highlight java linenos %}
 package com.example.mediapipe.edgedetection;
@@ -465,7 +465,7 @@ public class MainActivity extends AppCompatActivity {
 
   <uses-sdk
       android:minSdkVersion="21"
-      android:targetSdkVersion="31" />
+      android:targetSdkVersion="27" />
 
   <application
       android:allowBackup="true"
@@ -862,7 +862,7 @@ cc_library(
 android_binary(
     name = "edgedetection",
     assets = [
-        "//mediapipe/graphs/edge_detection:mobile_gpu.binarypb",
+        "//mediapipe/graphs/edge_detection:mobile_gpu_binary_graph",
     ],
     assets_dir = "",
     custom_package = "com.example.mediapipe.edgedetection",
@@ -872,7 +872,7 @@ android_binary(
         "appName": "MediaPipe Edge Detection",
         "mainActivity": ".MainActivity",
         "cameraFacingFront": "False",
-        "binaryGraphName": "mobile_gpu.binarypb",
+        "binaryGraphName": "mobile_gpu_binary_graph",
         "inputVideoStreamName": "input_video",
         "outputVideoStreamName": "output_video",
     },
@@ -884,7 +884,224 @@ android_binary(
 )
 {% endhighlight %}
 
-(6-6) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 MediaPipe Graph를 사용하기 위한 Asset Manager를 추가합니다.
+(6-6) "app" 경로 아래 "AndroidManifest.xml" 파일에 binaryGraphName, inputVideoStreamName, outputVideoStreamName 메타데이터를 추가합니다.
+
+{% highlight xml linenos %}
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mediapipe.edgedetection">
+
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-feature android:name="android.hardware.camera" />
+
+  <uses-sdk
+      android:minSdkVersion="21"
+      android:targetSdkVersion="27" />
+
+  <application
+      android:allowBackup="true"
+      android:label="${appName}"
+      android:supportsRtl="true"
+      android:theme="@style/AppTheme">
+      <activity
+          android:name="${mainActivity}"
+          android:exported="true"
+          android:screenOrientation="portrait">
+          <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
+              <category android:name="android.intent.category.LAUNCHER" />
+          </intent-filter>
+      </activity>
+      <!-- 메타데이터 추가 -->
+      <meta-data android:name="cameraFacingFront" android:value="${cameraFacingFront}"/>
+      <meta-data android:name="binaryGraphName" android:value="${binaryGraphName}" />
+      <meta-data android:name="inputVideoStreamName" android:value="${inputVideoStreamName}" />
+      <meta-data android:name="outputVideoStreamName" android:value="${outputVideoStreamName}" />
+  </application>
+
+</manifest>
+{% endhighlight %}
+
+(6-7) Mediapipe 프레임워크를 로드하려면 Medipipe 프레임워크가 사용하는 OpenCV가 필요합니다. 우선 "app" 경로 아래 "BUILD" 파일에 oepncv 라이브러리를 사용하기 위한 코드를 추가합니다. 추가한 코드는 10열에서 확인할 수 있습니다.
+
+{% highlight shell linenos %}
+android_library(
+    name = "basic_lib",
+    custom_package = "com.example.mediapipe.edgedetection",
+    srcs = ["java/com/example/mediapipe/edgedetection/MainActivity.java"],
+    manifest = "AndroidManifest.xml",
+    resource_files = glob(["res/**"]),
+    deps = [
+        "//third_party:androidx_constraint_layout",
+        "//third_party:androidx_appcompat",
+        "//third_party:opencv",
+        "//mediapipe/java/com/google/mediapipe/components:android_components",
+        "//mediapipe/java/com/google/mediapipe/components:android_camerax_helper",
+        "//mediapipe/java/com/google/mediapipe/glutil",
+        "//mediapipe/java/com/google/mediapipe/framework:android_framework",
+    ],
+)
+
+cc_binary(
+    name = "libmediapipe_jni.so",
+    linkshared = 1,
+    linkstatic = 1,
+    deps = [
+        "//mediapipe/java/com/google/mediapipe/framework/jni:mediapipe_framework_jni",
+    ],
+)
+
+cc_library(
+    name = "mediapipe_jni_lib",
+    srcs = [":libmediapipe_jni.so"],
+    alwayslink = 1,
+)
+
+android_binary(
+    name = "edgedetection",
+    custom_package = "com.example.mediapipe.edgedetection",
+    manifest = "AndroidManifest.xml",
+    manifest_values = {
+        "appName": "MediaPipe Edge Detection",
+        "mainActivity": ".MainActivity",
+        "cameraFacingFront": "False",
+    },
+    multidex = "native",
+    deps = [
+        ":basic_lib",
+        ":mediapipe_jni_lib",
+    ],
+)
+{% endhighlight %}
+
+(6-8) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 OpenCV를 로드하는 코드를 추가합니다.
+
+{% highlight java linenos %}
+package com.example.mediapipe.edgedetection;
+
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Bundle;
+import android.graphics.SurfaceTexture;
+import android.util.Log;
+import android.util.Size;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.mediapipe.components.CameraHelper;
+import com.google.mediapipe.components.PermissionHelper;
+import com.google.mediapipe.components.CameraXPreviewHelper;
+import com.google.mediapipe.components.ExternalTextureConverter;
+import com.google.mediapipe.framework.AndroidAssetUtil;
+import com.google.mediapipe.glutil.EglManager;
+
+public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+
+    // 필요한 native libray 로드
+    static {
+      System.loadLibrary("mediapipe_jni");
+      System.loadLibrary("opencv_java3");
+    }
+
+    private SurfaceTexture previewFrameTexture;
+    private SurfaceView previewDisplayView;
+    private CameraXPreviewHelper cameraHelper;
+    private ApplicationInfo applicationInfo;
+    private EglManager eglManager;
+    private ExternalTextureConverter converter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        try {
+            applicationInfo =
+                getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+        } catch (NameNotFoundException e) {
+            Log.e(TAG, "Cannot find application info: " + e);
+        }
+
+        previewDisplayView = new SurfaceView(this);
+        setupPreviewDisplayView();
+
+        AndroidAssetUtil.initializeNativeAssetManager(this);
+
+        eglManager = new EglManager(null);
+
+        PermissionHelper.checkAndRequestCameraPermissions(this);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(
+        int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionHelper.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        converter = new ExternalTextureConverter(eglManager.getContext());
+        if (PermissionHelper.cameraPermissionsGranted(this)) {
+            startCamera();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        converter.close();
+    }
+
+    private void setupPreviewDisplayView() {
+        previewDisplayView.setVisibility(View.GONE);
+        ViewGroup viewGroup = findViewById(R.id.preview_display_layout);
+        viewGroup.addView(previewDisplayView);
+
+        previewDisplayView
+        .getHolder()
+        .addCallback(
+            new SurfaceHolder.Callback() {
+            @Override
+            public void surfaceCreated(SurfaceHolder holder) {}
+
+            @Override
+            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+                Size viewSize = new Size(width, height);
+                Size displaySize = cameraHelper.computeDisplaySizeFromViewSize(viewSize);
+
+                converter.setSurfaceTextureAndAttachToGLContext(
+                    previewFrameTexture, displaySize.getWidth(), displaySize.getHeight());
+            }
+
+            @Override
+            public void surfaceDestroyed(SurfaceHolder holder) {}
+            });
+    }
+
+    public void startCamera() {
+        cameraHelper = new CameraXPreviewHelper();
+        cameraHelper.setOnCameraStartedListener(
+            surfaceTexture -> {
+                previewFrameTexture = surfaceTexture;
+                previewDisplayView.setVisibility(View.VISIBLE);
+        });
+
+        CameraHelper.CameraFacing cameraFacing =
+            applicationInfo.metaData.getBoolean("cameraFacingFront", false)
+                ? CameraHelper.CameraFacing.FRONT
+                : CameraHelper.CameraFacing.BACK;
+        cameraHelper.startCamera(this, cameraFacing, /*unusedSurfaceTexture=*/ null);
+    }
+}
+{% endhighlight %}
+
+(6-9) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 MediaPipe Graph를 사용하기 위한 Asset Manager를 추가합니다.
 
 {% highlight java linenos %}
 package com.example.mediapipe.edgedetection;
@@ -910,6 +1127,11 @@ import com.google.mediapipe.glutil.EglManager;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+
+    static {
+      System.loadLibrary("mediapipe_jni");
+      System.loadLibrary("opencv_java3");
+    }
 
     private SurfaceTexture previewFrameTexture;
     private SurfaceView previewDisplayView;
@@ -1005,7 +1227,7 @@ public class MainActivity extends AppCompatActivity {
 }
 {% endhighlight %}
 
-(6-7) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 카메라 프레임을 Mediapipe에서 사용할 수 있는 형태로 변환하여 전송하는 Frame Processor를 추가합니다.
+(6-10) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 카메라 프레임을 Mediapipe에서 사용할 수 있는 형태로 변환하여 전송하는 Frame Processor를 추가합니다.
 
 {% highlight java linenos %}
 package com.example.mediapipe.edgedetection;
@@ -1032,6 +1254,11 @@ import com.google.mediapipe.glutil.EglManager;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+
+    static {
+      System.loadLibrary("mediapipe_jni");
+      System.loadLibrary("opencv_java3");
+    }
 
     private SurfaceTexture previewFrameTexture;
     private SurfaceView previewDisplayView;
@@ -1142,12 +1369,52 @@ public class MainActivity extends AppCompatActivity {
 }
 {% endhighlight %}
 
+(6-11) 안드로이드 10 (API 29) 이후 발생한 Scoped storage 이슈를 방지하기 위해 "app" 경로 아래 "AndroidManifest.xml" 파일에서 application의 requestLegacyExternalStorage 설정을 true로 설정합니다.
+
+{% highlight xml linenos %}
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mediapipe.edgedetection">
+
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-feature android:name="android.hardware.camera" />
+
+  <uses-sdk
+      android:minSdkVersion="21"
+      android:targetSdkVersion="27" />
+
+  <application
+      android:allowBackup="true"
+      android:label="${appName}"
+      android:supportsRtl="true"
+      android:theme="@style/AppTheme"
+      android:requestLegacyExternalStorage="true">
+      <activity
+          android:name="${mainActivity}"
+          android:exported="true"
+          android:screenOrientation="portrait">
+          <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
+              <category android:name="android.intent.category.LAUNCHER" />
+          </intent-filter>
+      </activity>
+      <!-- 메타데이터 추가 -->
+      <meta-data android:name="cameraFacingFront" android:value="${cameraFacingFront}"/>
+      <meta-data android:name="binaryGraphName" android:value="${binaryGraphName}" />
+      <meta-data android:name="inputVideoStreamName" android:value="${inputVideoStreamName}" />
+      <meta-data android:name="outputVideoStreamName" android:value="${outputVideoStreamName}" />
+  </application>
+
+</manifest>
+{% endhighlight %}
+
+
 ## (7) 앱 빌드
 
-(7-1) 이제 아래와 같이 명령어를 입력하여 앱을 빌드합니다.
+(7-1) 이제 아래와 같이 명령어를 입력하여 앱을 빌드합니다. 빌드한 .so 파일을 32bit, 64bit 두 환경에서 모두 사용할 수 있도록 --fat_apk_cpu=armeabi-v7a,arm64-v8 옵션을 추가합니다.
 
 {% highlight shell linenos %}
-bazel build -c opt --define MEDAPIPE_DISABLE_GPU=1 //app:edgedetection
+bazel build -c opt --define MEDAPIPE_DISABLE_GPU=1 --fat_apk_cpu=armeabi-v7a,arm64-v8 //app:edgedetection
 {% endhighlight %}
 
 <p><img src="/assets/images/22103003.png" /></p>
