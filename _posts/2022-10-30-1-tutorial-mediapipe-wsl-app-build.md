@@ -862,7 +862,7 @@ cc_library(
 android_binary(
     name = "edgedetection",
     assets = [
-        "//mediapipe/graphs/edge_detection:mobile_gpu_binary_graph",
+        "//mediapipe/graphs/edge_detection:mobile_gpu.binarypb",
     ],
     assets_dir = "",
     custom_package = "com.example.mediapipe.edgedetection",
@@ -872,7 +872,7 @@ android_binary(
         "appName": "MediaPipe Edge Detection",
         "mainActivity": ".MainActivity",
         "cameraFacingFront": "False",
-        "binaryGraphName": "mobile_gpu_binary_graph",
+        "binaryGraphName": "mobile_gpu.binarypb",
         "inputVideoStreamName": "input_video",
         "outputVideoStreamName": "output_video",
     },
@@ -922,7 +922,15 @@ android_binary(
 </manifest>
 {% endhighlight %}
 
-(6-7) Mediapipe 프레임워크를 로드하려면 Medipipe 프레임워크가 사용하는 OpenCV가 필요합니다. 우선 "app" 경로 아래 "BUILD" 파일에 oepncv 라이브러리를 사용하기 위한 코드를 추가합니다. 추가한 코드는 10열에서 확인할 수 있습니다.
+(6-7) Mediapipe 프레임워크를 로드하려면 Medipipe 프레임워크가 사용하는 OpenCV가 필요합니다. 프로젝트의 최상단 디렉토리에서 아래 명령어를 통해 OepnCV 설정을 완료합니다.
+
+{% highlight shell linenos %}
+bash setup_opencv.sh
+{% endhighlight %}
+
+<p><img src="/assets/images/22122501.png" /></p>
+
+(6-8) "app" 경로 아래 "BUILD" 파일에 OepnCV 라이브러리를 사용하기 위한 코드를 추가합니다. 추가한 코드는 10열에서 확인할 수 있습니다.
 
 {% highlight shell linenos %}
 android_library(
@@ -974,7 +982,7 @@ android_binary(
 )
 {% endhighlight %}
 
-(6-8) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 OpenCV를 로드하는 코드를 추가합니다.
+(6-9) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 OpenCV를 로드하는 코드를 추가합니다.
 
 {% highlight java linenos %}
 package com.example.mediapipe.edgedetection;
@@ -1101,7 +1109,7 @@ public class MainActivity extends AppCompatActivity {
 }
 {% endhighlight %}
 
-(6-9) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 MediaPipe Graph를 사용하기 위한 Asset Manager를 추가합니다.
+(6-10) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 MediaPipe Graph를 사용하기 위한 Asset Manager를 추가합니다.
 
 {% highlight java linenos %}
 package com.example.mediapipe.edgedetection;
@@ -1227,7 +1235,7 @@ public class MainActivity extends AppCompatActivity {
 }
 {% endhighlight %}
 
-(6-10) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 카메라 프레임을 Mediapipe에서 사용할 수 있는 형태로 변환하여 전송하는 Frame Processor를 추가합니다.
+(6-11) "app/java/com/example/mediapipe/edgedetection" 경로 아래 "MainActivity.java" 파일에 카메라 프레임을 Mediapipe에서 사용할 수 있는 형태로 변환하여 전송하는 Frame Processor를 추가합니다.
 
 {% highlight java linenos %}
 package com.example.mediapipe.edgedetection;
@@ -1369,7 +1377,7 @@ public class MainActivity extends AppCompatActivity {
 }
 {% endhighlight %}
 
-(6-11) 안드로이드 10 (API 29) 이후 발생한 Scoped storage 이슈를 방지하기 위해 "app" 경로 아래 "AndroidManifest.xml" 파일에서 application의 requestLegacyExternalStorage 설정을 true로 설정합니다.
+(6-12) 안드로이드 10 (API 29) 이후 발생한 Scoped storage 이슈를 방지하기 위해 "app" 경로 아래 "AndroidManifest.xml" 파일에서 application의 requestLegacyExternalStorage 설정을 true로 설정합니다.
 
 {% highlight xml linenos %}
 <?xml version="1.0" encoding="utf-8"?>
