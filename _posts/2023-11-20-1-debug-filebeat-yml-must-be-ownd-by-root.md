@@ -23,7 +23,7 @@ Exiting: error loading config file: config file ("filebeat.yml") must be owned b
 </p>
 
 filebeat.yml 파일은 사용자를 제한해야하는 데 모두가 사용할 수 있도록 권한을 설정해두었기 때문에 발생한 이슈였습니다.
-스크린샷은 못 찍었지만 오류 메시지에서 해결 방법을 제시하고 있습니다. 오류 메시지의 안내대로 아래 명령어로 filebeat.yml 권한을 바꿔주면 문제가 해결됩니다.
+스크린샷은 못 찍었지만 오류 메시지에서 해결 방법을 제시하고 있습니다. 오류 메시지의 안내대로 아래 명령어로 filebeat.yml 권한을 바꿔준 후에 filebeat를 재기동하면 문제가 해결됩니다.
 
 {% highlight shell linenos %}
 sudo chmod go-w filebeat/filebeat.yml
