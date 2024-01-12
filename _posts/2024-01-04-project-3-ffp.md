@@ -4,7 +4,6 @@ excerpt: "2023년 2학기 연세대 공학대학원 딥러닝기반이상탐지�
 
 toc: true
 toc_sticky: true
-published: false
 categories:
   - Project
 tags:
@@ -91,9 +90,81 @@ Future Frame Prediction은 모델의 성능이 Predictor의 성능에 달려있�
 
 ### 실험 1 Predictor: U-Net vs U-Net + Transformer (ViViT)
 
+첫번째 실험은 Predictor의 구조를 변경하는 실험입니다. Transformer 모델은 영상 데이터에 많이 사용하는 [ViViT: A Video VIsion Transformer](https://arxiv.org/abs/2103.15691)를 사용했습니다. 기존의 U-Net 구조에서 U-Net + Transformer 구조로 변경했을 떄 AUC가 상상하는 것을 확인할 수 있었습니다. 이후 실험은 모두 오른쪽의 U-Net + Transformer 구조의 Predictor로 진행되었다는 것을 미리 말씀드립니다.
+
 ||U-Net|U-Net + Transformer|
 |--|:--:|:--:|
-|**Best AUC**|0.9515|0.9616|
+|**Best AUC**|0.9515|<span style="background-color:#fff5b1">0.9616</span>|
 |**Heatmap**|<img src="/assets/images/projects/project_3_exp1_1.gif" />|<img src="/assets/images/projects/project_3_exp1_2.gif" />|
 
-첫번째 실험은 Predictor의 구조를 변경하는 실험입니다. Transformer 모델은 영상 데이터에 많이 사용하는 [ViViT: A Video VIsion Transformer](https://arxiv.org/abs/2103.15691)를 사용했습니다. 기존의 U-Net 구조에서 U-Net + Transformer 구조로 변경했을 떄 AUC가 상상하는 것을 확인할 수 있었습니다. 이후 실험은 모두 오른쪽의 U-Net + Transformer 구조의 Predictor로 진행되었다는 것을 미리 말씀드립니다.
+_*참고: 두 실험은 모두 Optical Flow 모델을 FlowNet2로 하여 실험을 진행하였습니다_
+
+### 실험 2 Transformer Depth: 0~7
+
+두번째 실험은 Transformer의 Depth를 조정하는 실험입니다. Transformer는 여러개의 동이란 구조의 층(Layer)을 쌓아올려 네트워크를 형성할 수 있습니다. Self-Attention Mechanism이 여러 층에서 반복되면서 모델이 입력 시퀀스의 다양한 위치간 상호 작용을 학습하게 됩니다. Depth는 이렇게 쌓아올린 층의 개수를 말합니다. Depth가 깊어질 수록 모델의 표현력이 상승하지만 계산 비용이 증가하거나 과적합, 그래디언트 소실 등의 문제가 발생할 수 있습니다.
+
+아래는 저희 모델의 Predictor 구조입니다. 저희 모델은 Temporal Transformer 인코더와 Spatial Transformer 인코더를 사용하고 있습니다. 즉, 저희가 진행한 Transformer Depth의 실험은 아래의 구조를 몇번 반복하여 인코더를 구성하는지에 대한 문제였습니다.
+
+<img src="/assets/images/projects/project_3_08.png" />
+
+Spatial Depth는 0에서 7사이로 Temporal Depth는 1에서 4사이로 조정하여 실험을 진행하였으며 Spatial Depth가 6, Temporal Depth가 2일때 가장 높은 성능을 보였습니다.
+
+<img src="/assets/images/projects/project_3_09.png" width="600px" />
+
+### 실험 3 Optical Flow: FlowNet2 vs LiteFlowNet
+
+세번째 실험은 Optical Flow 모델 실험입니다. U-Net을 사용한 기본 모델에서는 LiteFlowNet보다 FlowNet2를 사용했을 때가 성능이 더 좋게 나왔지만 저희 모델 구조에서는 LiteFlowNet이 더 높은 성능을 보였습니다.
+
+||U-Net|U-Net + Transformer|
+|--|:--:|:--:|
+|**FlowNet2**|0.9515|0.9616|
+|**LiteFlowNet**|0.943|<span style="background-color:#fff5b1">0.9647</span>|
+
+### 실험 4 기존 Loss Function 검증
+
+네번째 실험은 기존 Loss Function을 검증하는 실험입니다. 기존 Baseline 모델에서 사용한 Loss Function은 아래와 같습니다.
+
+<img src="/assets/images/projects/project_3_10.png" width="800px" />
+
+우선 Adversarial Loss는 GAN 구조에서 필수적인 Loss Function이라고 생각해 제외하지 않았습니다. Intensity Loss와 Gradient Loss, Optical Flow Loss를 제외하거나 하나씩 남기면서 실험을 진행하였습니다. 저희 모델 구조에서는 Gradient Loss를 사용하지 않는 편이 더 높은 성능을 보였습니다.
+
+<img src="/assets/images/projects/project_3_11.png" />
+
+여기서 신기한 점을 하나 발견했습니다. Intensity Loss를 제외하였을 때 성능이 확 떨어지는 모습을 보였다는 것입니다. Baseline 논문에서는 Intensity Loss를 무조건 포함하여 실험을 진행하였는데 저희는 그 이유가 궁금하여 Intensity Loss 또한 실험 대상으로 삼았습니다. 그런데 이렇게 눈에 띄게 성능이 떨어진다는 것이 신기했습니다. 그래서 예측된 이미지를 직접 확인했습니다. Intensity Loss는 프레임간 색상 강도 차이를 최소화하는 Loss Function 입니다. 그렇기 때문에 Intensity Loss를 제외하면 예측 자체가 정상적으로 진행되지 않는 것을 확인할 수 있었습니다. Gradient Loss는 프레임간 경계차이를 최소화하는 Loss Function인데 Intensity Loss가 있다면 경계가 조금 흐려지더라도 Ground Truth에 가깝게 이미지가 재현되는 것을 확인할 수 있었습니다.
+
+<img src="/assets/images/projects/project_3_12.png" />
+
+### 실험 5 새로운 Loss Function 추가: Perceptual Loss
+
+마지막 실험은 새로운 Loss Function을 추가하는 실험입니다. 저희는 Perceptual Loss를 추가하고자 했습니다. Perceptual Loss란 Reconstruction 모델에서 많이 사용하는 Loss Functoin으로 Low Level에서 단순히 이미지 차이를 계산하는 Intensity Loss나 Gradient Loss와 달리 실제 시각적으로 유사한지를 확인하는 손실 함수입니다. Perceptual Loss 중에서도 아래 두 Loss Function을 추가하는 실험을 진행하였습니다.
+
+<img src="/assets/images/projects/project_3_13.png" width="750px" />
+
+Content Loss의 경우 가중치 1로 적용했을 때 0.9579의 AUC를 보였고 가중치를 0.5로 적용하였을 때는 0.9616의 AUC를 보였습니다. Style Loss는 AUC가 0.9578로 성능이 개선되지 않아 최종 실험에 포함하지 않았습니다.
+
+||U-Net|U-Net + Transformer|
+|--|:--:|:--:|
+|**Best AUC**|0.9579(가중치 1)<br /><span style="background-color:#fff5b1">0.9616(가중치 0.5)</span>|0.9578|
+|**Heatmap**|<img src="/assets/images/projects/project_3_04_heatmap_exp1_1.gif" />|<img src="/assets/images/projects/project_3_04_heatmap_style_loss.gif" />|
+
+## 최종 실험
+
+모든 실험의 결과를 조합한 최종 실험의 결과입니다. 성능 증가를 확인할 수 있었고 AUC 그래프가 우상향하고 있었으므로 Iteration을 좀더 진행할 경우 성능이 더 향상할 수 있을 것이라고 생각합니다. 이에 Predictor의 성능을 개선하여 모델 성능이 유의미하게 개선되었음을 확인할 수 있었습니다.
+
+<img src="/assets/images/projects/project_3_14.png" />
+
+<div style="display:grid; grid-template-columns: 2fr 1fr;">
+<img src="/assets/images/projects/project_3_15.png" />
+<img src="/assets/images/projects/project_3_04_heatmap_final.gif" />
+</div>
+
+### 추가 논의점
+* 1개월간 진행되는 학교 수업의 과제로 시간적, 자원적 한계가 있어 Iteration을 1만 번으로 제한하여 실험을 진행했습니다. 최종 실험의 경우 그래프가 우상향 하고 있었으므로 Iteration 수를 늘려 실험을 진행한다면 다른 Insight를 얻을 수 있을 것으로 예상합니다.
+* ViVit의 경우 U-Net의 Locality 한계를 보완하는 역할을 하기 때문에 여러 데이터셋이 혼재된 경우에 더 강하다는 특징을 가집니다. 추후 여러 데이터셋으로 추가 학습하여 성능을 볼 수 있으면 좋겠습니다.
+* Style Loss나 Content Loss의 경우 가중치 조정, 최적화를 통해 성능을 높일 수 있는 가능성이 있습니다.
+
+### 결론
+
+저는 데이터 엔지니어로 데이터 분석이 제 주 업무는 아니지만 이번 프로젝트를 통해서 데이터 분석 설계부터 결과 분석까지 쭉 경험하면서 다음 두가지를 얻을 수 있었습니다. 첫번째는 데이터 분석에 대한 이해도가 높아지면서 데이터 분석가와의 협업이 좀더 원활해 질 것으로 기대합니다. 두번째로 데이터 파이프라인을 구축할 때 좀더 데이터 분석 친화적으로 구축할 수 있을 것 같습니다.
+
+감사합니다.
