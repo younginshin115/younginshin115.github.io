@@ -1,6 +1,6 @@
 ---
-title:  "[Project][연세대 공학대학원] Future Frame Prediction 모델 개선 프로젝트"
-excerpt: "2023년 2학기 연세대 공학대학원 딥러닝기반이상탐지모델링 수업 팀 프로젝트: Future Frame Prediction 모델 개선 프로젝트"
+title:  "[Project][대학원] Future Frame Prediction 모델 개선 프로젝트"
+excerpt: "2023년 2학기 연세대 공학대학원 컴퓨터소프트웨어 딥러닝기반이상탐지모델링 수업 팀 프로젝트: Future Frame Prediction 모델 개선 프로젝트"
 
 toc: true
 toc_sticky: true
@@ -12,7 +12,7 @@ tags:
   - Transformer
   - CNN
   - ML
-last_modified_at: 2024-01-04T17:30:00
+last_modified_at: 2024-01-12T18:03:00
 ---
 
 # Future Frame Prediction 모델 개선 프로젝트
