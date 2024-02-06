@@ -4,6 +4,7 @@ excerpt: "한양대학교 SW융합교육원 PBL 빅데이터 전문가 양성 �
 
 toc: true
 toc_sticky: true
+toc_ads: false
 
 categories:
   - Project
