@@ -16,11 +16,11 @@ minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt
 
 # Site Settings
 locale                   : "ko-KR"
-title                    : "Home"
+title                    : "카페인 주도 개발 로그 Caffeine Driven Dev Log"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Youngin"
-description              : "Youngin Shin's Blog"
+name                     : "Caju"
+description              : "개발하면서 배운 점이나 해결한 문제를 공유하는 블로그입니다."
 url                      : "https://younginshin115.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "younginshin115/younginshin115.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -102,9 +102,9 @@ analytics:
 
 # Site Author
 author:
-  name             : "Youngin"
+  name             : "Caju"
   avatar           : "/assets/images/profile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "신입 개발자 신영인입니다"
+  bio              : "데이터 엔지니어 신영인입니다. 개발하면서 배운 점이나 해결한 문제를 공유하고 있습니다."
   location         : "Seongnam, Korea"
   email            :
   links:
