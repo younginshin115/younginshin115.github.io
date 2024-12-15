@@ -2,8 +2,8 @@
 title:  "[Tutorial][nvidia-smi] 241215 nvidia-smi 실시간 모니터링"
 excerpt: "watch와 nvidia-smi 명령어를 결합시켜 실시간으로 GPU 사용량 모니터링 하기"
 
-toc: true
-toc_sticky: true
+toc: false
+toc_sticky: false
 
 categories:
   - Tutorial
