@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][GCE] 250329 GCE Google Login Invalid Token 문제 해결결"
+title:  "[Debug][GCE] 250329 GCE Google Login Invalid Token 문제 해결"
 excerpt: "Google Compute Engine 기반 서버에서 Google Login 사용 중에 Invalid Token이라며 인증이 되지 않는 문제 해결"
 
 toc: false
