@@ -1,5 +1,5 @@
 ---
-title: "[개발 공부 노트] WebRTC 연결 흐름"
+title: "[Dev notes] WebRTC 연결 흐름"
 excerpt: "'아무도 알려주지 않는 WebRTC를 사용한 P2P통신' 강의를 수강하며 정리한 WebRTC 연결 흐름"
 
 toc: true
