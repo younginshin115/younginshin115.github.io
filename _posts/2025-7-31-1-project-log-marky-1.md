@@ -1,14 +1,14 @@
 ---
-title: "[Project Log][React Native] 마크다운 뷰어 MarkY 개발기 1"
+title: "[DevLogs][React Native] 마크다운 뷰어 MarkY 개발기 1"
 excerpt: "React Native 기반 마크다운 뷰어 MarkY 개발기 1 - 프로젝트 시작 배경과 기능 설계"
 
 toc: false
 toc_sticky: false
 
 categories:
-  - Project-log
+  - Dev-logs
 tags:
-  - Project-log
+  - Dev-logs
   - Marky
   - React-Native
 last_modified_at: 2025-7-31T20:24:00
