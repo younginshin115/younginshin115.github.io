@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][VScode] 240111 Visual Studio Code에서 개발 서버를 실행했을 때 무한 로딩 이슈 해결"
+title: "[Debug][VScode] 250111 Visual Studio Code에서 개발 서버를 실행했을 때 무한 로딩 이슈 해결"
 excerpt: "Visual Studio Code에서 npm start로 localhost:3000에서 애플리케이션을 실행했을 때 무한 로딩되며 해당 포트로 접속이 되지 않는 문제 해결"
 
 toc: false
