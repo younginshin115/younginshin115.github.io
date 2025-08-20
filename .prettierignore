@@ -1,0 +1,27 @@
+# Jekyll 관련 파일들
+_site/
+.jekyll-cache/
+_posts/
+_pages/
+_layouts/
+_includes/
+_sass/
+assets/
+docs/
+test/
+
+# 마크다운 파일들
+*.md
+
+# 설정 파일들
+_config.yml
+Gemfile*
+package*.json
+*.yml
+*.yaml
+
+# 기타 파일들
+*.html
+*.scss
+*.css
+*.js
