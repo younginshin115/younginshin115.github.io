@@ -4,6 +4,7 @@ excerpt: "React Native 기반 마크다운 뷰어 MarkY 개발기 1 - 프로젝�
 
 toc: false
 toc_sticky: false
+published: false
 
 categories:
   - Dev-logs
