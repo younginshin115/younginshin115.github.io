@@ -111,13 +111,13 @@ You can utilize these tools.
 ```bash
 # cd <PROJECT_DIRECTORY> && gh pr diff <PR_NUMBER> | grep "^+" | cat
 # cd <PROJECT_DIRECTORY> && gh pr diff <PR_NUMBER> | cat
-cd ${PROJECT_ROOT} && python3 ../cursor-tools/fetch_pr_diff.py
+cd ${PROJECT_ROOT} && python3 cursor-tools/fetch_pr_diff.py
 ```
 
 Use the json from given Prompt to comment on PR. Use command like this for each review comment like this.
 
 ```bash
-cd ${PROJECT_ROOT} && ../cursor-tools/gh-pr-comment.sh pr review <PR_NUMBER> --comment -b <review comment> --path <FILE_PATH> --line <LINE_NUMBER>
+cd ${PROJECT_ROOT} && cursor-tools/gh-pr-comment.sh pr review <PR_NUMBER> --comment -b <review comment> --path <FILE_PATH> --line <LINE_NUMBER>
 ```
 
 **Note**: Make sure to set `PROJECT_ROOT` environment variable in your `.env` file before using these tools.
