@@ -66,24 +66,23 @@ FitGuru는 사용자가 기록한 운동·식단 로그를 기반으로 LLM 프�
 
 ## 서비스 소개
 
+<img src="/assets/images/projects/fitguru0.png" />
+
 FitGuru는 사용자가 기록한 운동·식단 로그를 기반으로 LLM이 맞춤형 코칭을 제공하는 서비스입니다.
 주요 기능은 세 가지로 나눌 수 있습니다.
-
-<img src="/assets/images/projects/fitguru1.png" />
-
 
 ### 💪 운동 기록 & 루틴 추천
 사용자는 일 단위로 운동 기록을 남길 수 있습니다. 운동 부위, 종류, 횟수, 무게까지 상세하게 입력할 수 있습니다. 이렇게 기록된 최근 1주의 데이터를 기반으로 AI가 맞춤형 루틴을 추천해줍니다. 추천 결과에는 세트 수, 중량 변화, 주의할 점까지 포함되어 있어 사용자가 꾸준히 성장할 수 있도록 돕습니다.
 
 <div style="display:grid; grid-template-columns: 2fr 1fr;">
-<img src="/assets/images/projects/fitguru2.png" />
-<img src="/assets/images/projects/fitguru4.png" />
+<img src="/assets/images/projects/fitguru1.png" />
+<img src="/assets/images/projects/fitguru3.png" />
 </div>
 
 ### 🥗 식단 상담
 식단에 대한 궁금증을 입력하면, LLM이 즉각적으로 답변해줍니다. 단순히 해당 음식이 다이어트에 도움이 되는 것 뿐만 아니라, 대체할 수 있는 음식이나 다이어트 팁도 함께 공유합니다.
 
-<img src="/assets/images/projects/fitguru4.png" />
+<img src="/assets/images/projects/fitguru5.png" />
 
 ### 📊 체성분 상담
 체성분 데이터(예: 체지방률, 근육량 등)를 기반으로 다이어트 전략이나 운동·식단 방향을 조언해줍니다. 예를 들어 체지방률이 높다면 감량 위주의 전략을, 근육량이 부족하다면 근력 운동 위주의 전략을 제안하는 식입니다. 다만 이번에는 MVP를 빠르게 구현하는 데 집중했기 때문에 이 기능은 제외되었습니다.
@@ -94,7 +93,7 @@ FitGuru는 MVP 프로젝트였기 때문에, 복잡한 아키텍처 대신 "최�
 
 | 구성 요소   | 사용 기술                                | 비고                         |
 |-------------|------------------------------------------|------------------------------|
-| DB          | Google Spreadsheet                       | 간단한 로그 저장용           |
+| DB          | Google Spreadsheet                       | 사용자 정보와 운동·식단 기록 저장용    |
 | API 서버    | Google App Script                        | CRUD + Gemini API 연동       |
 | 프론트엔드  | React                                    | Netlify로 배포               |
 | LLM         | Google Gemini API (무료 티어)            | 프롬프트 엔지니어링 기반 응답 |
