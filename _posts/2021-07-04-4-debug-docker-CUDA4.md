@@ -14,12 +14,12 @@ tags:
 last_modified_at: 2021-07-04T09:29:00
 ---
 
-Docker에서 CUDA 컨테이너를 구축할 때 아래와 같은 오류가 발생했다.
+Docker에서 CUDA 컨테이너를 구축할 때 아래와 같은 오류가 발생하였습니다.
 
 <p class="error_msg">cannot dlopen some gpu libraries</p>
 
-호스트의 CUDA 버전과 동일한 버전의 이미지를 설치했더니 문제가 해결되었다.
-CUDA 버전은 nvcc -V 명령어로 확인할 수 있다.
+호스트의 CUDA 버전과 동일한 버전의 이미지를 설치했더니 문제가 해결되었습니다.
+CUDA 버전은 nvcc -V 명령어로 확인할 수 있습니다.
 
 <p style="background-color:black;"><img src="/assets/images/21092105.png" /></p>
 

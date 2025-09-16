@@ -22,11 +22,11 @@ Spring Boot : 2.5.3
 ```
 
 <br>
-Spring Boot와 Vue를 이용하여 Websocket 기반 채팅 서비스를 개발하던 중 아래와 같은 오류가 발생했다.
+Spring Boot와 Vue를 이용하여 Websocket 기반 채팅 서비스를 개발하던 중 아래와 같은 오류가 발생하였습니다.
 
 <p class="error_msg">java.lang.IllegalArgumentException: When allowCredentials is true, allowedOrigins cannot contain the special value "*" since that cannot be set on the "Access-Control-Allow-Origin" response header. To allow credentials to a set of origins, list them explicitly or consider using "allowedOriginPatterns" instead.</p>
 
-'*' 대신 서비스 하는 호스트 이름을 적었더니 해결되었다.
+'*' 대신 서비스 하는 호스트 이름을 적었더니 해결되었습니다.
 ```
 [수정전]
 registry.addEndpoint("/ws-stomp").setAllowedOrigins("*").withSockJS();

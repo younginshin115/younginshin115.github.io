@@ -14,11 +14,11 @@ tags:
 last_modified_at: 2021-07-04T09:29:00
 ---
 
-Docker에서 CUDA 컨테이너를 구축할 때 아래와 같은 오류가 발생했다.
+Docker에서 CUDA 컨테이너를 구축할 때 아래와 같은 오류가 발생하였습니다.
 
 <p class="error_msg">could not load dynamic library libcudnn.so.8</p>
 
-기본 이미지를 cudnn 포함한 이미지로 바꿨더니 해결되었다.
+기본 이미지를 cudnn 포함한 이미지로 바꿨더니 해결되었습니다.
 
 |||
 |:---|:---|

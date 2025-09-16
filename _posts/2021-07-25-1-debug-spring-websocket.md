@@ -22,10 +22,10 @@ Spring Boot : 2.5.3
 ```
 
 <br>
-Spring Boot와 Vue를 이용하여 Websocket 기반 채팅 서비스를 개발하던 중 아래와 같은 오류가 발생했다.
+Spring Boot와 Vue를 이용하여 Websocket 기반 채팅 서비스를 개발하던 중 아래와 같은 오류가 발생하였습니다.
 
 <p class="error_msg">javax.servlet.ServletException: Circular view path [project]: would dispatch back to the current handler URL [/project] again. Check your ViewResolver setup! (Hint: This may be the result of an unspecified view, due to default view name generation.)</p>
 
-검색 결과 Spring 2.2.x 버전부터 ftl이 아니라 ftlh 확장자를 지원한다고 하여 확장자명을 변경하는 것으로 해결했다.
+검색 결과 Spring 2.2.x 버전부터 ftl이 아니라 ftlh 확장자를 지원한다고 하여 확장자명을 변경하는 것으로 해결하였습니다.
 
 참고 : <a href="https://stackoverflow.com/questions/42330870/spring-boot-unable-to-resolve-freemarker-view">https://stackoverflow.com/questions/42330870/spring-boot-unable-to-resolve-freemarker-view</a>
