@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][MediaPipe] 220927 WSL Ubuntu 20.04 Mediapipe - MediaPipe 설치"
+title:  "[MediaPipe] WSL Ubuntu 20.04 Mediapipe - MediaPipe 설치"
 excerpt: "Android에 MediaPipe 탑재하기(2)"
 
 toc: true

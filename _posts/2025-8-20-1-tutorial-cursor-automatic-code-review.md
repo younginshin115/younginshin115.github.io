@@ -1,5 +1,5 @@
 ---
-title: "[Tutorial][Cursor] 250820 Cusor로 PR 리뷰하기"
+title: "[Cursor] Cusor로 PR 리뷰하기"
 excerpt: "Cursor를 사용해서 자동으로 PR 리뷰하기"
 
 toc: true

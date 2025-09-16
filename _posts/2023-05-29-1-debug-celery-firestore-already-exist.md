@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Firestore] 230529 Celery로 비동기 작업할 때 Firestore 사용 시 Default app already exists 오류 해결"
+title:  "[Firestore] Celery로 비동기 작업할 때 Firestore 사용 시 Default app already exists 오류 해결"
 excerpt: "Airflow 버전 업그레이드 시 Bad data 발생 오류 해결"
 
 toc: false

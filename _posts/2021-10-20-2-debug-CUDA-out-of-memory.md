@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][CUDA] 211020 CUDA out of memory."
+title:  "[CUDA] CUDA out of memory."
 excerpt: "Pytorch 기반 KoBERT를 학습시킬 때 발생한 오류 해결"
 
 toc: false

@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][Docker] 210907 Docker container 유지"
+title:  "[Docker] Docker container 유지"
 excerpt: "Docker container 유지하기"
 
 toc: false

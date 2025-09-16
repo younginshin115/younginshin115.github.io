@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Docker] 220304 ConnectionRefusedError: [Errno 111] Connection refused"
+title:  "[Docker] ConnectionRefusedError: [Errno 111] Connection refused"
 excerpt: "Docker 환경에서 Airflow와 InfluxDB를 연결할 때 생긴 네트워크 오류 해결"
 
 toc: false

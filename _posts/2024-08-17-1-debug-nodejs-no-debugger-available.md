@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][NodeJS] 240817 NodeJS 디버깅 시 VS Code Debug console에서 No debugger available, can not send 'variables' 이슈 해결"
+title:  "[NodeJS] NodeJS 디버깅 시 VS Code Debug console에서 No debugger available, can not send 'variables' 이슈 해결"
 excerpt: "Visual Studio Code에서 NodeJS 디버깅 시 Debug console dotenv에서 No debugger available, can not send 'variables' 라고 뜨며 디버깅이 진행되지 않는 이슈 해결"
 
 toc: false

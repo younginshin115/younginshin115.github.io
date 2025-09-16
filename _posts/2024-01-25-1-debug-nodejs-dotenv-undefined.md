@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][NodeJS] 240126 Node.js에서 dotenv 패키지를 사용하여 환경 변수를 불러올 때 발생한 TypeError: Cannot read properties of undefined 이슈 해결"
+title:  "[NodeJS] Node.js에서 dotenv 패키지를 사용하여 환경 변수를 불러올 때 발생한 TypeError: Cannot read properties of undefined 이슈 해결"
 excerpt: "NodeJS에서 dotenv 패키지를 사용하여 환경 변수를 불러올 때 발생한 TypeError: Cannot read properties of undefined 이슈 해결"
 
 toc: false

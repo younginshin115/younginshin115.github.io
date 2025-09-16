@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][InfluxDB-Grafana] 220307 Grafana InfluxDB flux 문법에서 Alias/Label 적용하기"
+title:  "[InfluxDB-Grafana] Grafana InfluxDB flux 문법에서 Alias/Label 적용하기"
 excerpt: "Grafana에서 InfluxDB 2.0 이상 버전을 시각화 할 때 사용하는 Flux 문법에서 데이터에 Alias/Label 적용하는 방법"
 
 toc: false

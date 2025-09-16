@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Airflow] 220719 Airflow 버전 업그레이드 시 Bad data 발생 오류 해결"
+title:  "[Airflow] Airflow 버전 업그레이드 시 Bad data 발생 오류 해결"
 excerpt: "Airflow 버전 업그레이드 시 Bad data 발생 오류 해결"
 
 toc: false

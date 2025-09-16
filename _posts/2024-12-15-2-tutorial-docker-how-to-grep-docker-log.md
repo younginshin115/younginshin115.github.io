@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][Docker] 241215 How to grep docker log"
+title:  "[Docker] How to grep docker log"
 excerpt: "Docker log에 grep 명령어를 적용하는 방법"
 
 toc: false

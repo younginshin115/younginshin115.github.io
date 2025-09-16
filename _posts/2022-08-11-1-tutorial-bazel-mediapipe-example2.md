@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][Bazel-MediaPipe] 220811 Android Bazel MediaPipe 예제(2)"
+title:  "[Bazel-MediaPipe] Android Bazel MediaPipe 예제(2)"
 excerpt: "Android에 머신러닝 탑재하기(6)"
 
 toc: true

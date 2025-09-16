@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][Docker] Ubuntu에 Docker 설치하기"
+title:  "[Docker] Ubuntu에 Docker 설치하기"
 excerpt: "Ubuntu에 Docker 설치하기"
 
 toc: false

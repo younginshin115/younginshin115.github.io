@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Celery] 250303 Celery Task 완료 후에도 GPU 메모리를 계속 점유하는 문제 해결"
+title:  "[Celery] Celery Task 완료 후에도 GPU 메모리를 계속 점유하는 문제 해결"
 excerpt: "Celery Task 완료 후에도 GPU 메모리를 계속 점유 하는 문제 해결"
 
 toc: true

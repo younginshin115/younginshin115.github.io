@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Docker] 210704 Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory;"
+title:  "[Docker] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory;"
 excerpt: "ML 기반 챗봇 Javas 개발기8 - Docker CUDA 오류 모음1"
 
 toc: false

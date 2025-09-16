@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Pytorch] 211020 cannot import name 'SAVE_STATE_WARNING' from 'torch.optim.lr_scheduler'"
+title:  "[Pytorch] cannot import name 'SAVE_STATE_WARNING' from 'torch.optim.lr_scheduler'"
 excerpt: "Pytorch 기반 Distil-KoBERT를 학습시킬 때 발생한 오류 해결"
 
 toc: false

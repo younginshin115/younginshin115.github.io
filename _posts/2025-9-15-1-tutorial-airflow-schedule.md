@@ -1,5 +1,5 @@
 ---
-title: "[Tutorial][Airflow] 250915 Airflow Schedule 설정 방법"
+title: "[Airflow] Airflow Schedule 설정 방법"
 excerpt: "Airflow Schedule 설정 방법 3가지 - datetime.timedelta, cron preset, cron expression"
 
 toc: true

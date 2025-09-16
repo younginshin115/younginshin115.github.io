@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][Tensorflow] 240206 M1 MacBook에서 Tensorflow 사용"
+title:  "[Tensorflow] M1 MacBook에서 Tensorflow 사용"
 excerpt: "M1 MacBook에서 Tensorflow 사용"
 
 toc: true

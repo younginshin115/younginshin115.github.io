@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Jenkins] 241109 Jenkins에서 git fetch 해올 때 발생하는 not in a git directory 오류 해결"
+title:  "[Jenkins] Jenkins에서 git fetch 해올 때 발생하는 not in a git directory 오류 해결"
 excerpt: "Jenkins에서 git fetch 해올 때 발생하는 not in a git directory 오류 해결"
 
 toc: false

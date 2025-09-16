@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][Airflow] 220913 Kubernetes Dashboard 연결"
+title:  "[Airflow] Kubernetes Dashboard 연결"
 excerpt: "Kubernetes Web UI Dashboard 연결"
 
 toc: false

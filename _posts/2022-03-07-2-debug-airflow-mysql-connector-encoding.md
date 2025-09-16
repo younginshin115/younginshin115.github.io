@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Airflow] 220307 Airflow MySQL Connector 한글 사용법"
+title:  "[Airflow] Airflow MySQL Connector 한글 사용법"
 excerpt: "Airflow MySQL Connector 한글 사용법"
 
 toc: false

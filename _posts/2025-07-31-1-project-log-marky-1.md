@@ -1,5 +1,5 @@
 ---
-title: "[DevLogs][React Native] 마크다운 뷰어 MarkY 개발기 1"
+title: "[React Native] 마크다운 뷰어 MarkY 개발기 1"
 excerpt: "React Native 기반 마크다운 뷰어 MarkY 개발기 1 - 프로젝트 시작 배경과 기능 설계"
 
 toc: false

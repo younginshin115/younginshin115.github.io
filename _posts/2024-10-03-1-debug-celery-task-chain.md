@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Celery] 241003 Celery task chain에서 발생하는 argument 관련 오류 해결"
+title:  "[Celery] Celery task chain에서 발생하는 argument 관련 오류 해결"
 excerpt: "Celery task chain 시 발생하는 takes 0 positional arguments but 1 was given 오류와 multiple values for argument 오류 해결"
 
 toc: false

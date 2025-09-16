@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Python] 210623 OSError: cannot open resource"
+title:  "[Python] OSError: cannot open resource"
 excerpt: "ML 기반 챗봇 Javas 개발기3"
 
 toc: false

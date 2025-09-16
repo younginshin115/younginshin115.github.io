@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Python] 210623 Python signals: ValueError: signal only works in main thread"
+title:  "[Python] Python signals: ValueError: signal only works in main thread"
 excerpt: "ML 기반 챗봇 Javas 개발기4"
 
 toc: false

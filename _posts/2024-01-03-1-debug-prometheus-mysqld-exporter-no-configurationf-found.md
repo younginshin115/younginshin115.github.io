@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Prometheus] 240103 Prometheus Mysqld-exporter 구동 시 발생한 No configuration found 이슈 해결"
+title:  "[Prometheus] Prometheus Mysqld-exporter 구동 시 발생한 No configuration found 이슈 해결"
 excerpt: "Prometheus Mysqld-exporter 구동 시 발생한 No configuration found 이슈 해결"
 
 toc: false

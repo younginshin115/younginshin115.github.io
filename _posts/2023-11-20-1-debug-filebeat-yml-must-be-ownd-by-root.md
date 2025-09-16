@@ -1,5 +1,5 @@
 ---
-title:  "[Debug][Filebeat] 231120 Filebeat 구동 시 발생한 권한 문제 해결"
+title:  "[Filebeat] Filebeat 구동 시 발생한 권한 문제 해결"
 excerpt: "Filebeat 구동 시 발생한 권한 문제 해결"
 
 toc: false

@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][Kafka] 210623 VirtualBox 내의 Kafka에 접속하기"
+title:  "[Kafka] VirtualBox 내의 Kafka에 접속하기"
 excerpt: "VirtualBox 내의 Kafka에 접속하기"
 
 toc: false

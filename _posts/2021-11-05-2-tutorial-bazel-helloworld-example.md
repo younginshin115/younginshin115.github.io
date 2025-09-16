@@ -1,5 +1,5 @@
 ---
-title:  "[Tutorial][Bazel] 211105 Android Bazel Hello World 예제"
+title:  "[Bazel] Android Bazel Hello World 예제"
 excerpt: "Android에 머신러닝 탑재하기(4)"
 
 toc: true
