@@ -2,8 +2,8 @@
 title:  "[Jenkins] GitHub Webhook이 PR Merge 후 두 번 트리거되는 문제 해결"
 excerpt: "Jenkins에서 GitHub Webhook을 사용할 때, PR Merge 후 파이프라인이 중복 실행되는 문제를 분석하고 해결한 과정"
 
-toc: false
-toc_sticky: false
+toc: true
+toc_sticky: true
 
 categories:
   - Debug
