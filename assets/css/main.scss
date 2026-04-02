@@ -7,3 +7,12 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
+
+p>code, a>code, li>code, figcaption>code, td>code {
+  background: #eef4ff;
+  color: #0F52BA;
+  border: 1px solid #b3cdf5;
+  border-radius: 3px;
+  padding: 0.1rem 0.1rem;
+  margin: 0 0.2rem;
+}
