@@ -4,9 +4,66 @@
 
 @charset "utf-8";
 
+// Cool Light syntax theme
+$base00: #f8faff;
+$base01: #eef2fb;
+$base02: #d0daf0;
+$base03: #8094b4;
+$base04: #6b7fa8;
+$base05: #2c3a5a;
+$base06: #1a2540;
+$base07: #0d1526;
+$base08: #c0392b;
+$base09: #d35400;
+$base0a: #0F52BA;
+$base0b: #1a7f5a;
+$base0c: #1a7f9e;
+$base0d: #0F52BA;
+$base0e: #6f42c1;
+$base0f: #a0293a;
+
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
+
+// 코드 블럭 폰트 크기
+div.highlighter-rouge,
+figure.highlight {
+  font-size: 0.85em;
+}
+
+// 라인 번호 스타일
+.highlight table td.gutter,
+.highlight table td.rouge-gutter {
+  color: #8094b4;
+  border-right: 1px solid #d0daf0;
+}
+
+// 복사 버튼
+.copy-code-btn {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  background: #eef2fb;
+  color: #6b7fa8;
+  border: 1px solid #d0daf0;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8em;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+
+  &:hover {
+    background: #d0daf0;
+    color: #2c3a5a;
+  }
+}
+
+div.highlighter-rouge:hover .copy-code-btn,
+figure.highlight:hover .copy-code-btn {
+  opacity: 1;
+}
 
 p>code, a>code, li>code, figcaption>code, td>code {
   background: #eef4ff;
