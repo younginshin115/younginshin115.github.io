@@ -1,5 +1,5 @@
 ---
-title: "[Cursor] Cusor로 PR 리뷰하기"
+title: "[Cursor] Cursor로 PR 리뷰하기"
 excerpt: "Cursor를 사용해서 자동으로 PR 리뷰하기"
 
 toc: true
